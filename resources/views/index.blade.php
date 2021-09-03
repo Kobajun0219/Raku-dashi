@@ -173,11 +173,6 @@
 <!--jsにでーたおくるためのものです消さないでください！-->
 <div style="display:none;">{{$keynum = 1}}</div>
 
-@php
-    $api=config('app.api') 
-@endphp
-
-
 <!--下記スクリプトタグはｊｓに必要なデータを送る処理-->
 <script>
 
@@ -187,8 +182,7 @@ let keynum= {{$keynum}};
 
 let my_lat = '{{$my_lat}}';
 let my_long = '{{$my_long}}';
-let api = "{{ config('app.api') }}";
-console.log(api);
+
 console.log(boxes);
 console.log(my_lat);
 console.log(my_long);
