@@ -1,0 +1,26 @@
+    <!--いいね-->
+    <td>
+        {{ \App\Like::where('box_id',$box->id)->count()}}
+        <form action="{{ url('/like') }}" method="POST" class="form-horizontal">
+            {{ csrf_field()}}
+            <button><i class="fas fa-thumbs-up"></i></button>
+            <input type="hidden" name="box_id" value="{{ $box->id }}">
+            <input type="hidden" name="u_id" value="1">
+        </form>   
+    </td>
+    <td>
+                                
+                                
+    //いいね
+    public function like(Request $request){
+        
+        $box = new Like;
+        $box->box_id = $request->box_id;
+        $box->u_id = $request->u_id;
+        $box->save(); 
+        return redirect('/');
+    }
+    
+    
+    
+    
