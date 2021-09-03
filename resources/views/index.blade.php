@@ -30,7 +30,6 @@
   </style>
     
 
-    
     <div class="input-group pl-2 pr-2">
     <input type="text" id="address" value="{{old('address')}}" class="form-control" placeholder="住所を入力">
     <input class="btn btn-outline-secondary" type="button" value="検索" id="button">
@@ -174,6 +173,10 @@
 <!--jsにでーたおくるためのものです消さないでください！-->
 <div style="display:none;">{{$keynum = 1}}</div>
 
+@php
+    $api=config('app.api') 
+@endphp
+
 
 <!--下記スクリプトタグはｊｓに必要なデータを送る処理-->
 <script>
@@ -184,6 +187,8 @@ let keynum= {{$keynum}};
 
 let my_lat = '{{$my_lat}}';
 let my_long = '{{$my_long}}';
+let api = "{{ config('app.api') }}";
+console.log(api);
 console.log(boxes);
 console.log(my_lat);
 console.log(my_long);
@@ -196,7 +201,7 @@ console.log(my_long);
 
 
 <!--google map api 読み込み-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaoodzSyZ0wSxScFNNFPhUPd-NZYjd8ww&libraries=geometry"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{config('app.api')}}&libraries=geometry"></script>
 <script src="{{ asset('js/distance.js') }}"></script>
 <script src="{{ asset('js/like.js') }}"></script>
 <script>

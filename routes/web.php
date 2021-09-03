@@ -13,7 +13,7 @@
 use App\Box;
 use Illuminate\Http\Request;
 
-Route::group(['middleware' => ['auth','verified']], function () {
+Route::group(['middleware' => 'auth'], function () {
 
 Route::post('/comment', 'MainController@comment');
 Route::get('/post', 'MainController@post');

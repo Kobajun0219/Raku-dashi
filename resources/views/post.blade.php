@@ -59,6 +59,7 @@
               <input type="text" name="address" id="address" value="{{old('address')}}">
               <button type="button" value="検索" id="map_button" class="btn btn-secondary"><img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/></button>
               
+              <!-- 登録ボタン -->
               <div class="text-right">
               <button type="submit" class="btn" id="show_s" style="background-color:#FCE38A; display: none;">登録</button>
              </div>
@@ -70,8 +71,7 @@
                 <input type="hidden" id="lat" value="" name="ido">
                 <input type="hidden" id="lng" value="" name="keido">
 
-            <!-- 登録ボタン -->
-
+            
 
         </form>
     </div>
@@ -89,6 +89,6 @@
     <script src="{{ asset('/js/tag.js') }}"></script>
     <script src="{{ asset('/js/edit.js') }}"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAaoodzSyZ0wSxScFNNFPhUPd-NZYjd8ww"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{config('app.api')}}"></script>
     
 @endsection

@@ -19,8 +19,6 @@ class MainController extends Controller
     
     //一覧画面
     public function index(){
-        
-
         $boxes = Box::withCount('likes')->orderBy('created_at', 'asc')->get();
 
         
