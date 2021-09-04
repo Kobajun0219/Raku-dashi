@@ -43,7 +43,7 @@
                 </h5>
       
                 </label></div>
-                <input name='tags' class='basic' placeholder='write some tags' value='#何でも, #ポリエステル' autofocus>
+                <input name='tags' class='basic' placeholder='write some tags' value='#何でも, #ポリエステル,#自社のみ,#コットン' autofocus>
             </div>
             <!--ここまで-->
             

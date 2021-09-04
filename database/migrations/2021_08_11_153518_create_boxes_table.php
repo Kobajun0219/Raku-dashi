@@ -17,7 +17,7 @@ class CreateBoxesTable extends Migration
             $table->increments('id');
             $table->string('place_name',100);
             $table->text('message')->nullable();
-            $table->text('url');
+            $table->text('url')->nullable();
             $table->text('pic_name');
             $table->string('address',100);
             $table->float('box_latitude',9,6);

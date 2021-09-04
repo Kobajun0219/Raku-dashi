@@ -75,7 +75,7 @@
                             <div>
                                 
                               <div style="text-align:center;">
-                              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal{{$box->id}}">
+                              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal{{$box->id}}" id="detail{{$box->id}}">
                               <img src="{{url('image/02.png')}}">
                               </button>
                               </div>
@@ -85,10 +85,12 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModal{{$box->id}}">
-                                        <a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
-                                        {{$box->place_name}}&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank"><i class="fas fa-map-marker-alt"></i>
+                                        {{$box->place_name}}
+                                        </a>
+                                        
                                         @if ($box->url == true)
-                                        <button type="submit" class="btn" style="background-color:#FCE38A;"><a href="{{$box->url}}">URL</a></button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn" style="background-color:#FCE38A;"><a href="{{$box->url}}">URL</a></button>
                                         @endif
                                         </h5>
                                         
@@ -183,9 +185,9 @@ let keynum= {{$keynum}};
 let my_lat = '{{$my_lat}}';
 let my_long = '{{$my_long}}';
 
-console.log(boxes);
-console.log(my_lat);
-console.log(my_long);
+// console.log(boxes);
+// console.log(my_lat);
+// console.log(my_long);
 </script>
 
 

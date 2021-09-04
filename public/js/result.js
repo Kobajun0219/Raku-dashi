@@ -193,7 +193,7 @@ function initMap() {
             map: gmap,                              // gmap の上に表示する
             position: initPos,                      // initPos の位置に
         });
-        placeMermaids();                            // ★投稿を配置する
+        showonmap();                            // ★投稿を配置する
     }, (error) => {                                 // エラー処理（今回は特に何もしない）
     }, {
         enableHighAccuracy: true                    // 高精度で測定するオプション
@@ -202,25 +202,31 @@ function initMap() {
 
 
 
-// ★投稿を地図上に配置する placeMermaids 関数
-function placeMermaids() {
-    console.log("placeMermaids");
+// ★投稿を地図上に配置する showonmap 関数
+function showonmap() {
     var toukouMark = []; // 投稿マーカーの配列
     var toukouInfo = [];
     for (var i = 0; i < toukou.length; i++) {      // 全ての投稿について
         var pos = new google.maps.LatLng(toukou[i].box_latitude, toukou[i].box_longitude); // 投稿の位置を設定
-      //自分の手紙かどうかの条件分岐
-        if(toukou[i].u_id == keynum) {
         var img = {                                 // 画像の設定
-            url: "https://edc5b72932a14663a5ef477e89f57591.vfs.cloud9.ap-northeast-1.amazonaws.com/image/01.png",        
+            url: "../image/01.png",        
             scaledSize: new google.maps.Size(40, 40)    // 画像を縮小表示
         };
-        } else {
-            var img = {                                 // 画像の設定
-            url: "https://edc5b72932a14663a5ef477e89f57591.vfs.cloud9.ap-northeast-1.amazonaws.com/image/01.png",        
-            scaledSize: new google.maps.Size(40, 40)    // 画像を縮小表示
-        };
-}
+        
+      //自分の手紙かどうかの条件分岐
+        // if(toukou[i].u_id == keynum) {
+        // var img = {                                 // 画像の設定
+        //     url: "../image/01.png",        
+        //     scaledSize: new google.maps.Size(40, 40)    // 画像を縮小表示
+        // };
+        // } else {
+        //     var img = {                                 // 画像の設定
+        //     url: "../image/01.png",        
+        //     scaledSize: new google.maps.Size(40, 40)    // 画像を縮小表示
+        // };
+        // }
+        
+        
       //投稿マークを作成
         toukouMark[i] = new google.maps.Marker({   // 投稿のマーカーを作成
             map: gmap,                              // gmap の上に表示する
@@ -228,6 +234,8 @@ function placeMermaids() {
             icon: img,                              // アイコンを設定
             title: toukou[i].open_place_name// タイトルを設定
         });
+        
+        
         //円オブジェクトを作成
         // circle = new google.maps.Circle({
         //  center: pos,
@@ -243,16 +251,26 @@ function placeMermaids() {
         //吹き出しを作成する関数。吹き出しの文言を変化させたいのであればここ。
         toukouInfo[i] = new google.maps.InfoWindow({
         content: `
-        <p>場所の名前　${toukou[i].place_name}</p><br>
+        <p>名称　${toukou[i].place_name}</p><br>
         <p>コメント　${toukou[i].message}</p><br>
         <p>現在地からの距離　${toukou[i].distance}km</p>
         `,
         maxWidth: 200
     });
 
-        captured[i] = false;  // 取得済み状態を全てfalseにする
+        //captured[i] = false;  // 取得済み状態を全てfalseにする
         
         hoverEvent(toukouInfo[i],toukouMark[i]);
+        
+        
+        //クリックでmodalを表示させる
+        let idid= toukou[i].id;
+        toukouMark[i].addListener("click", () => {
+            document.getElementById('detail'+idid).click();
+            
+         });
+        
+        
         
     }
 }

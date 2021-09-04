@@ -40,4 +40,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
+    
+    //ログイン後のページ遷移
+    public function redirectPath()
+    {
+        return '/mypage';
+
+    }
+    
 }
