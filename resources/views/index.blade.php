@@ -32,7 +32,7 @@
 
     <div class="input-group pl-2 pr-2">
     <input type="text" id="address" value="{{old('address')}}" class="form-control" placeholder="住所を入力">
-    <input class="btn btn-outline-secondary" type="button" value="検索" id="button">
+    <button class="btn btn-outline-secondary"value="検索" id="button"><i class="fas fa-search-location"></i></button>
     </div>
     
     <div class="pl-2 pr-2 pb-2">
@@ -44,8 +44,13 @@
     </form>
     </div>
     
+      <!--地図が入る-->
+      <div id="mapDiv" style="height:400px; width:95%; margin:auto;"></div>
+      <!--地図の中に画像を表示させるのに必要-->
+      <!--<img id="getImg" src="" hidden>-->
+      <canvas id="cap" width="300" height="60" style="display:none;"></canvas>
+    
     <div class="pl-2 pr-2">
-     <!-- 登録一覧 -->
     @if (count($boxes) > 0)
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <table class="table table-sm">
@@ -62,10 +67,9 @@
                         <td class="align-middle" style="width:30%">
                            <a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank" class="font-weight-bold">{{$box->place_name}}</a>
                         </td>
-                        <td style="width:35%">
-                            <div>
-                            @foreach ($box->tags as $tag) 　　　
-                                <a class="btn btn-outline-warning text-body font-weight-bold align-middle">{{$tag->tag_name}}</a>
+                        <td nowrap style="width:35%">
+                            <div style="display:flex; flex-wrap: wrap;">
+                            @foreach ($box->tags as $tag)<div class="btn btn-outline-warning text-body font-weight-bold btn-sm pl-1 pr-1" style="font-size: 1px;">{{$tag->tag_name}}</div>
                             @endforeach
                             </div>
                         </td>
@@ -80,6 +84,7 @@
                               </button>
                               </div>
                               
+                              <!--modal中身-->
                               <div class="modal fade" id="exampleModal{{$box->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:400px;">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
@@ -100,8 +105,8 @@
                                         <div>{{$box->message}}</div>
                                         <div>
                                         <!--タグを表示させるループ処理-->
-                                        @foreach ($box->tags as $tag) 　　　
-                                            <button class="btn btn-outline-warning text-body font-weight-bold no-gutters">{{$tag->tag_name}}</button>
+                                        @foreach ($box->tags as $tag)
+                                        <button class="btn btn-outline-warning text-body font-weight-bold no-gutters">{{$tag->tag_name}}</button>
                                         @endforeach
                                         </div>
                                     </div>
@@ -161,16 +166,6 @@
     </div>
     @endif
     </div>
-    
-    
-  <!--地図が入る-->
-  <div id="mapDiv" style="height:400px; width:95%; margin:auto;"></div>
-  <!--地図の中に画像を表示させるのに必要-->
-  <!--<img id="getImg" src="" hidden>-->
-  
-  
-  <canvas id="cap" width="300" height="60" style="display:none;"></canvas>
-    
     
 <!--jsにでーたおくるためのものです消さないでください！-->
 <div style="display:none;">{{$keynum = 1}}</div>

@@ -13,18 +13,17 @@
 
 Route::group(['middleware' => ['auth','verified']], function () {
 
-Route::post('/comment', 'MainController@comment');
 
-Route::get('/mypage', 'UserController@mypage');
-
-Route::delete('/box/{box}','UserController@destroy' );
-Route::post('/like', 'LikeController@like')->name('reviews.like');
 
 });
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/post', 'MainController@post');
     Route::post('/boxs', 'MainController@store');
+    Route::post('/comment', 'MainController@comment');
+    Route::get('/mypage', 'UserController@mypage');
+    Route::delete('/box/{box}','UserController@destroy' );
+    Route::post('/like', 'LikeController@like')->name('reviews.like');
 });
 
 Route::get('/mail','TestMailController@send');

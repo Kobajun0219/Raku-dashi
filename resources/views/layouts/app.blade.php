@@ -36,11 +36,12 @@
 
     <!-- Modal -->
     <div class="modal fade" id="add" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-dialog modal-dialog-centered">
+          
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="add">真のコスト</h5>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-bs-dismiss="modal" style="background-color:#FCE38A;">Close</button>
           </div>
           <div class="modal-body">
             <iframe style="max-width:100%;" width="400" height="280" src="https://www.youtube.com/embed/nxhCpLzreCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -48,7 +49,18 @@
           <div class="modal-footer">
             真のコストは、人々と地球に対するファッションの影響を探るドキュメンタリー映画です。<br>ストーリーライン：私たちが着る服、それを作る人々、そして業界が私たちの世界に与えている影響についてです。衣料の価格は数十年にわたって減少してきましたが、人的および環境的コストは劇的に増大しました。真のコストは、未知の物語の幕を引き、私たちに問題定義をしてくれます。
           </div>
+          <div class="modal-header">
+            <h5 class="modal-title" id="add">真のコスト</h5> 
+            <button type="button" class="btn" data-bs-dismiss="modal" style="background-color:#FCE38A;">Close</button>
+          </div>
+          <div class="modal-body">
+            <iframe style="max-width:100%;" width="400" height="280" src="https://www.youtube.com/embed/OpP2mFS7yrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="modal-footer">
+            【大量廃棄社会①】マスメディアでは報じられないアパレル業界の闇（Fashion’s Huge Waste Problem）
+          </div>
         </div>
+        
       </div>
     </div>
 
@@ -79,7 +91,7 @@
                     
 
                     <button class="navbar-toggler" type="button">
-                        <a href="{{ url('post') }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ url('post') }}"><i class="fas fa-plus"></i></a>
                     </button>
                     
                     
@@ -90,7 +102,7 @@
                     
                     <div class="dropup">
                       <button class="navbar-toggler" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-hamburger"></i>
+                        <i class="fas fa-tshirt"></i>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style = "left: -100px;">
                             @guest
@@ -113,12 +125,16 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}&nbsp;&nbsp;<i class="fas fa-chevron-right"></i>
+                                    {{ __('Logout') }}&nbsp;&nbsp;<i class="fas fa-chevron-right"></i>
                                     </a>
     
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                </li>
+                                
+                                <li class="dropdown-item list-group-item-action">
+                                    <a class="nav-link" href="">チュートリアル&nbsp;&nbsp;<i class="fas fa-chevron-right"></i></a>
                                 </li>
                                 
                                 <li class="dropdown-item list-group-item-action">

@@ -1,16 +1,42 @@
 @extends('layouts.app')
 @section('content')
-
+  <style>
+      .tags-look .tagify__dropdown__item{
+      display: inline-block;
+      border-radius: 3px;
+      padding: .3em .5em;
+      border: 1px solid #CCC;
+      background: #F3F3F3;
+      margin: .2em;
+      font-size: .85em;
+      color: black;
+      transition: 0s;
+    }
+    
+    .tags-look .tagify__dropdown__item--active{
+      color: black;
+    }
+    
+    .tags-look .tagify__dropdown__item:hover{
+      background: lightyellow;
+      border-color: gold;
+    }
+    
+    
+    .tagify__tag{
+      margin:1px;
+    }
+    
+  </style>
 
     <!-- バリデーションエラーの表示に使用-->
     @include('common.errors')
     <!-- バリデーションエラーの表示に使用-->
 
-
    <!-- Bootstrapの定形コード… -->
     <div class="card-body">
         <h4 class="card-title">
-            登録 <a style="font-size:15px;">*は必須です</a>
+            登録 <a style="font-size:15px;">*は<span style="color: red;">必須</span>です</a>
         </h4>
 
         <!-- 登録フォーム -->
@@ -37,13 +63,10 @@
             
             <!--タグ-->
             <div class="form-content">
-                <div><label for="tags">
-                <h5 class="font-weight">
-                タグ<img src="https://img.icons8.com/material-outlined/24/000000/tag-window.png"/>
-                </h5>
-      
-                </label></div>
-                <input name='tags' class='basic' placeholder='write some tags' value='#何でも, #ポリエステル,#自社のみ,#コットン' autofocus>
+                <div class="col-sm-6">
+                <h5 class="font-weight">タグ<img src="https://img.icons8.com/material-outlined/24/000000/tag-window.png"/></h5>
+                <input name='tags' id='input-custom-dropdown' class='some_class_name' value='#他社製品OK, #自社製品'>
+                </div>
             </div>
             <!--ここまで-->
             
@@ -56,7 +79,7 @@
               </h5>
                 
                 </label></div>
-              <input type="text" name="address" id="address" value="{{old('address')}}">
+              <input type="text" name="address" id="address" value="{{old('address') ?: '渋谷駅'}}">
               <button type="button" value="検索" id="map_button" class="btn btn-secondary"><img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/></button>
               
               <!-- 登録ボタン -->
