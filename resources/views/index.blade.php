@@ -67,9 +67,11 @@
                         <td class="align-middle" style="width:30%">
                            <a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank" class="font-weight-bold">{{$box->place_name}}</a>
                         </td>
+                               
+                        <!--tag表示-->
                         <td nowrap style="width:35%">
                             <div style="display:flex; flex-wrap: wrap;">
-                            @foreach ($box->tags as $tag)<div class="btn btn-outline-warning text-body font-weight-bold btn-sm pl-1 pr-1" style="font-size: 1px;">{{$tag->tag_name}}</div>
+                            @foreach ($box->tags as $tag)<div class="btn btn-outline-warning text-body font-weight-bold btn-sm pl-1 pr-1" style="font-size: 5px;">{{$tag->tag_name}}</div>
                             @endforeach
                             </div>
                         </td>
