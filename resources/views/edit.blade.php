@@ -50,13 +50,17 @@
                     コメント*<input type="text" name="message" class="form-control" value="{{old('message') ?: $box->message}}">
                 </div>
             </div>
-          
+            
             <div class="input-group">
-                <div class="col-sm-6">
+                <div class="col-6">
                     サイトURL<input type="text" name="url" class="form-control" value="{{old('url') ?: $box->url}}">
                 </div>
                 <div class="col-6">
-                    画像<input type="file" name="file_name" class="form-control" value="{{old('url') ?: $box->file_name}}">
+                  画像
+                  <label for="file_upload" class="form-control"id="label">
+                  <div id="file_n">ファイルを選択</div>
+                    <input type="file" id="file_upload" name="file_name" class="form-control" value="{{old('url') ?: $box->file_name}}" style="display:none;">
+                  </label>
                 </div>
             </div>
             
@@ -72,10 +76,10 @@
                 '>
                 </div>
             </div>
-            <!--ここまで-->
+            <!--ここまで--
             
-              <!--場所-->
-            <div class="form-content">
+            <!--場所-->
+            <div class="form-content mt-3">
               <div><label for="address">
                 
                 <h5 class="font-weight">

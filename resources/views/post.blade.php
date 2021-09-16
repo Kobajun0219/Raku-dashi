@@ -69,13 +69,13 @@
             <div class="form-content">
                 <div class="col-sm-6">
                 <h5 class="font-weight">タグ<img src="https://img.icons8.com/material-outlined/24/000000/tag-window.png"/></h5>
-                <input name='tags' id='input-custom-dropdown' class='some_class_name' value='#他社製品OK, #自社製品'>
+                <input name='tags' id='input-custom-dropdown' class='some_class_name' value='{{old('tags') ?: '#他社製品OK, #自社製品'}}'>
                 </div>
             </div>
             <!--ここまで-->
             
               <!--場所-->
-            <div class="form-content">
+            <div class="form-content mt-3">
               <div><label for="address">
                 
                 <h5 class="font-weight">

@@ -104,19 +104,17 @@
                                     </div>
                                     <div class="modal-body">
                                         @if ($box->file_name == "")
-                                        <img src="{{url('image/raku.png')}}" style="max-width:100%;">
+                                            <img src="{{url('image/raku.png')}}" style="max-width:100%;">
                                         @else
-                                        <img src="{{$box->file_name}}" style="max-width:100%;">
+                                            <img src="{{$box->file_name}}" style="max-width:100%;">
                                         @endif
-                                        <div class="p-1">{{$box->message}}</div>
-                                        <div class="border-bottom pb-1 mb-1">
+                                            <div class="p-1">{{$box->message}}</div>
+                                            <div class="border-bottom pb-1 mb-1">
                                         <!--タグを表示させるループ処理-->
                                         @foreach ($box->tags as $tag)
-                                        <button class="btn btn-outline-warning text-body font-weight-bold no-gutters">{{$tag->tag_name}}</button>
+                                            <button class="btn btn-outline-warning text-body font-weight-bold no-gutters">{{$tag->tag_name}}</button>
                                         @endforeach
-                                        </div>
-                                    <!--</div>-->
-                                    <!--<div class="modal-footer">-->
+                                            </div>
                                 
                                         <!--コメント入力欄-->
                                           <form action="{{ url('comment') }}" method="POST" class="form-horizontal" enctype="multipart/form-data"> 
@@ -144,12 +142,11 @@
                                           </div>
                                         　@endforeach
                                        
-                                        
-                                          <!--コメント一覧終わり-->
+                                         <!--コメント一覧終わり-->
                                     </div>
-                                    </div>
-                                    </div>
-                                  </div>
+                                </div>
+                                </div>
+                              </div>
                                   
                                 <!--いいね機能-->
                                 <div style="text-align:center;"> 

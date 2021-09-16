@@ -41,36 +41,44 @@
                             
                             <td>
                               <div style="">
-                              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal{{$box->id}}">
-                              <img src="{{url('image/02.png')}}">
+                              <button type="button" class="btn pr-1 pl-1 pb-0" data-bs-toggle="modal" data-bs-target="#exampleModal{{$box->id}}" style="background-color:#FCE38A;">
+                              <i class="far fa-comment-alt fa-2x"></i>
                               </button>
                               </div>
                                  
-                                 <div class="modal fade" id="exampleModal{{$box->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                        <div class="modal-content">
+                              <!--modal中身-->
+                              <div class="modal fade" id="exampleModal{{$box->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content" style="height:600px; max-width:400px;">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModal{{$box->id}}"><a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank">{{$box->place_name}}</a></h5>
                                     </div>
                                     <div class="modal-body">
-                                        <img src="{{url('image/raku.png')}}" style="max-width:100%;">
-                                        <div>{{$box->message}}</div>
-                                        <div>
+                                        @if ($box->file_name == "")
+                                            <img src="{{url('image/raku.png')}}" style="max-width:100%;">
+                                        @else
+                                            <img src="{{$box->file_name}}" style="max-width:100%;">
+                                        @endif
+                                            <div class="p-1">{{$box->message}}</div>
+                                            <div class="border-bottom pb-1 mb-1">
                                         <!--タグを表示させるループ処理-->
                                         @foreach ($box->tags as $tag)
-                                        <button class="btn btn-outline-warning text-body font-weight-bold no-gutters">{{$tag->tag_name}}</button>
+                                            <button class="btn btn-outline-warning text-body font-weight-bold no-gutters">{{$tag->tag_name}}</button>
                                         @endforeach
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
+                                            </div>
+
+
                                         <!--コメント一覧-->
                                         <div>コメント一覧</div>
-                                        <div style="width: 100%;">
-                                           @foreach ($box->comments as $comment)
-                                            <div>{{$comment->comment}}</div>
+                                          @foreach ($box->comments as $comment)
+                                          <div style="width: 100%;" class="border-top pt-1 mt-1">
+                                            <div class="p-1">{{$comment->comment}}</div>
+                                            @if ($comment->file_name == true)
+                                            <img src="{{$comment->file_name}}" style="max-width:100%;">
+                                            @endif
                                             <div class="float-right">{{$comment->created_at}}</div>
-                                        　 @endforeach
-                                        </div>
+                                          </div>
+                                        　@endforeach
                                         <!--コメント一覧終わり-->
                                     </div>
                                 </div>
