@@ -26,7 +26,6 @@
     .tagify__tag{
       margin:1px;
     }
-    
   </style>
 
     <!-- バリデーションエラーの表示に使用-->
@@ -40,36 +39,37 @@
         </h4>
 
         <!-- 登録フォーム -->
-        <form action="{{ url('boxs') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+        <form action="{{ url('update') }}" method="POST" class="form-horizontal">
             {{ csrf_field() }}
 
             <div class="input-group">
                 <div class="col-sm-6">
-                   場所名* <input type="text" name="place_name" class="form-control" value="{{old('place_name')}}" placeholder="ユニクロ渋谷店">
+                   名称* <input type="text" name="place_name" class="form-control" value="{{old('place_name') ?: $box->place_name}}">
                 </div>
                 <div class="col-sm-6">
-                    コメント*<input type="text" name="message" class="form-control" value="{{old('message')}}" placeholder="500円クーポンもらえます">
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <div class="col-6">
-                    サイトURL<input type="text" name="url" class="form-control" value="{{old('url')}}">
-                </div>
-                <div class="col-6">
-                  画像
-                  <label for="file_upload" class="form-control"id="label">
-                  <div id="file_n">ファイルを選択</div>
-                    <input type="file" id="file_upload" name="file_name" class="form-control" value="{{old('file_name')}}" style="display:none;">
-                  </label>
+                    コメント*<input type="text" name="message" class="form-control" value="{{old('message') ?: $box->message}}">
                 </div>
             </div>
           
+            <div class="input-group">
+                <div class="col-sm-6">
+                    サイトURL<input type="text" name="url" class="form-control" value="{{old('url') ?: $box->url}}">
+                </div>
+                <div class="col-6">
+                    画像<input type="file" name="file_name" class="form-control" value="{{old('url') ?: $box->file_name}}">
+                </div>
+            </div>
+            
             <!--タグ-->
             <div class="form-content">
                 <div class="col-sm-6">
                 <h5 class="font-weight">タグ<img src="https://img.icons8.com/material-outlined/24/000000/tag-window.png"/></h5>
-                <input name='tags' id='input-custom-dropdown' class='some_class_name' value='#他社製品OK, #自社製品'>
+                <input name='tags' id='input-custom-dropdown' class='some_class_name' 
+                value='
+                @foreach ($box->tags as $tag)
+                #{{$tag->tag_name}},
+                @endforeach
+                '>
                 </div>
             </div>
             <!--ここまで-->
@@ -83,12 +83,12 @@
               </h5>
                 
                 </label></div>
-              <input type="text" name="address" id="address" value="{{old('address') ?: 'ユニクロ渋谷店'}}">
+              <input type="text" name="address" id="address" value="{{old('address') ?: $box->address}}">
               <button type="button" value="検索" id="map_button" class="btn btn-secondary"><img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/></button>
               
               <!-- 登録ボタン -->
               <div class="text-right">
-              <button type="submit" class="btn" id="show_s" style="background-color:#FCE38A;" disabled>登録</button>
+              <button type="submit" class="btn" id="show_s" style="background-color:#FCE38A;" disabled>編集</button>
              </div>
             
             </div>
@@ -96,6 +96,8 @@
             <!-- 緯度、軽度をhiddenで情報送ってます -->
                 <input type="hidden" id="lat" value="" name="ido">
                 <input type="hidden" id="lng" value="" name="keido">
+                
+                <input type="hidden" id="" value="{{ $box->id }}" name="id">
 
         </form>
     </div>
@@ -108,12 +110,7 @@
     </div>
     <!--ここまで-->
 </div>
-    <script>
-      $('#file_upload').on('change', function () {
-      var file = $(this).prop('files')[0];
-      $('#file_n').text(file.name);
-      });
-    </script>
+
 
     <script src="{{ asset('/js/tag.js') }}"></script>
     <script src="{{ asset('/js/edit.js') }}"></script>

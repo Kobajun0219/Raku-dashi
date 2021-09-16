@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             // $table->foreign("u_id")->references("id")->on("users")->onDelete('cascade');
             $table->integer('box_id')->unsigned();
             $table->foreign("box_id")->references("id")->on("boxes")->onDelete('cascade');
+            $table->text('file_name')->nullable();
             $table->timestamps();
         });
     }

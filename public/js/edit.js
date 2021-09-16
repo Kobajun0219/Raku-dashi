@@ -10,11 +10,23 @@
 
 // show();
 
-$(function () {
-    $('#map_button').on('click', () => {
-        $('#show_s').show();
-    });
-});
+
+// 送信ボタンを有効にする機能
+    window.addEventListener('DOMContentLoaded',function(){
+    document.getElementById('show_s').disabled = true;
+    document.getElementById('address').addEventListener('keyup',function(){
+    if (this.value.length < 1) {
+    document.getElementById('show_s').disabled = true;
+    } else {
+    document.getElementById('show_s').disabled = false;
+    }
+    },false);
+    document.getElementById('address').addEventListener('change',function(){
+    if (this.value.length < 1) {
+    document.getElementById('show_s').disabled = true;
+    }
+    },false);
+    },false);
 
 
 var getMap = (function() {

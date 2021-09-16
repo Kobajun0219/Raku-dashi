@@ -14,6 +14,8 @@
         };
 
     </script>
+    
+        <div>Hi! {{Auth::user()->name}}さん</div>
 
 
         <div class="pl-2 pr-2">
@@ -55,13 +57,14 @@
                                         <div>{{$box->message}}</div>
                                         <div>
                                         <!--タグを表示させるループ処理-->
-                                        @foreach ($box->tags as $tag) 　　　
-                                            <button class="btn btn-outline-warning text-body font-weight-bold no-gutters">{{$tag->tag_name}}</button>
+                                        @foreach ($box->tags as $tag)
+                                        <button class="btn btn-outline-warning text-body font-weight-bold no-gutters">{{$tag->tag_name}}</button>
                                         @endforeach
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <!--コメント一覧-->
+                                        <div>コメント一覧</div>
                                         <div style="width: 100%;">
                                            @foreach ($box->comments as $comment)
                                             <div>{{$comment->comment}}</div>
@@ -72,25 +75,28 @@
                                     </div>
                                 </div>
                             </td>
+                            
+                            <!-- 編集ボタン -->
+                            <td class="align-middle">
+                                <form action="{{ url('edit/'.$box->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                 <button type="submit" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                                </form>
+                            </td>
+                            
                             <!-- 削除ボタン -->
                             <td class="align-middle">
                                 <form action="{{ url('box/'.$box->id) }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('delete') }}
-                                 <button type="submit" class="btn btn-danger" onClick="delete_alert(event);return false;">削除</button>
+                                 <button type="submit" class="btn btn-danger" onClick="delete_alert(event);return false;"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
                             
-                                
-                                
                         </tr>
                         @endforeach
                     </tbody>
                     @endif
                 </table>
         </div>
-
-
-
-
 @endsection

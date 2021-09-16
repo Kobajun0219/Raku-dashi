@@ -21,7 +21,6 @@ class BoxesTableSeeder extends Seeder
             'place_name' => 'ユニクロ',
             'message' => '営業時間注意',
             'url' => 'https://map.uniqlo.com/jp/ja/detail/10101307',
-            'pic_name' => 'hogehoge',
             'address' => '東京都渋谷区道玄坂２丁目２９−５ 内 渋谷プライム',
             'box_latitude' => '35.6594202',
             'box_longitude' => '139.6983425',

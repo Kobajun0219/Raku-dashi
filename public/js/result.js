@@ -1,21 +1,6 @@
-//非公開データと公開データを結合させる
-let toukou = boxes;
-
 var mapDiv = document.getElementById("mapDiv");     // 地図を置く場所
 var gmap;  　                                       // Googleマップの Map オブジェクトのための変数
 var mark;                                           // Googleマップの Marker オブジェクトのための変数
-
-// ★投稿の情報を入れる変数
-var captured = [];                                  // ★投稿を取得済みか否かを入れる変数
-// ★投稿の情報を読み込む（緯度軽度）
-// var getImg = document.getElementById("getImg");     // ★img要素の取得
-var canvas = document.getElementById("cap");        // ★取得済投稿を入れるcanvas要素の取得
-var context = canvas.getContext("2d");              // ★contextの取得
-context.fillStyle = "rgb(153, 217, 234)";           // ★塗りつぶす色をターコイズにする
-context.fillRect(0, 0, 300, 60);                    // ★canvasを塗りつぶす
-
-console.log(canvas);
-console.log(context);
 
 // GPS センサの値が変化したら何らか実行する geolocation.watchPosition メソッド
 navigator.geolocation.watchPosition((position) => {
@@ -27,10 +12,6 @@ navigator.geolocation.watchPosition((position) => {
     
     
     var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
-    //showMyPos(lat, lng);                            // showMyPos 関数を実行
-    // calcDistance(lat, lng);
-    
-    
 });
 
 // 自分の位置を表示する showMyPos 関数
@@ -46,7 +27,7 @@ initMap();
 function initMap() {
     // 1回だけ現在位置を測定する getCurrentPosition メソッド
     navigator.geolocation.getCurrentPosition((position) => {
-        console.log(my_lat);
+
         if(my_lat !== "" && my_long !== ""){
         var lat = my_lat;
         var lng  = my_long;
@@ -236,18 +217,6 @@ function showonmap() {
         });
         
         
-        //円オブジェクトを作成
-        // circle = new google.maps.Circle({
-        //  center: pos,
-        //  map: gmap ,
-        //  radius: 50 , // 半径（m）
-        //  fillColor: '#6c757d',   // 塗りつぶし色
-        //  fillOpacity: 0.2,  // 塗りつぶし透過度（0: 透明 ⇔ 1:不透明）
-        //  strokeColor: '#000000',  // 外周色
-        //  strokeOpacity: 1, // 外周透過度（0: 透明 ⇔ 1:不透明）
-        //  strokeWeight: 5  // 外周太さ
-        // });
-        
         //吹き出しを作成する関数。吹き出しの文言を変化させたいのであればここ。
         toukouInfo[i] = new google.maps.InfoWindow({
         content: `
@@ -258,7 +227,6 @@ function showonmap() {
         maxWidth: 200
     });
 
-        //captured[i] = false;  // 取得済み状態を全てfalseにする
         
         hoverEvent(toukouInfo[i],toukouMark[i]);
         
@@ -287,14 +255,13 @@ function hoverEvent(data,keydata) {
 }
 
 //場所をクリックしたら地図の場所が変わる関数
-function eventPanto(data) {
-    console.log('dsd');
-     let xPlace = data['open_place_latitude'];
-     let yPlace = data['open_place_longitude'];
-    var targetPlace = new google.maps.LatLng(xPlace, yPlace);
-    gmap.panTo(targetPlace);
+// function eventPanto(data) {
+//      let xPlace = data['open_place_latitude'];
+//      let yPlace = data['open_place_longitude'];
+//     var targetPlace = new google.maps.LatLng(xPlace, yPlace);
+//     gmap.panTo(targetPlace);
     
-}
+// }
 
 
 

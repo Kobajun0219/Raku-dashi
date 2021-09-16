@@ -10,8 +10,10 @@ use App\Box_tag;
 use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 use App\Jobs\LikeJob;
+use Config;
 
 class MainController extends Controller
 {
@@ -46,7 +48,6 @@ class MainController extends Controller
         $validator = Validator::make($request->all(), [
             'comment' => 'required|max:255',
         ]);
-    
         //バリデーション:エラー 
         if ($validator->fails()) {
             return redirect('/')
@@ -54,14 +55,26 @@ class MainController extends Controller
                 ->withErrors($validator);
         }
         
-        
         $comment = new Comment;
+        
+        //画像投稿
+        if($fileName = $request->file_name){
+        //保存するファイルに名前をつける
+          $path = Storage::disk('s3')->putFile('/demo', $fileName, 'public');
+          $comment->file_name = Storage::disk('s3')->url($path);
+         }else{
+        //画像が登録されなかった時はから文字をいれる
+          $fileName = "";
+          $comment->file_name = $fileName;
+         }
+        
         $comment->comment = $request->comment;
-        $comment->u_id = '1';
+        $comment->u_id = auth()->id();
         $comment->box_id = $request->box_id;
         $comment->save(); 
         return view('endcomment');
     }
+    
     
     //Box投稿
     public function store(Request $request){
@@ -71,8 +84,6 @@ class MainController extends Controller
             'ido' => 'required|max:50',
             'keido' => 'max:50',
             'address' => 'required|max:255',
-            
-            
         ]);
     
         //バリデーション:エラー 
@@ -99,18 +110,28 @@ class MainController extends Controller
         };
         // 投稿にタグ付するために、attachメソッドをつかい、モデルを結びつけている中間テーブルにレコードを挿入します。
         
-        // dd($request);
-        $box = new Box;
-        $box->place_name = $request->place_name;
-        $box->message = $request->message;
-        $box->url = $request->url;
-        $box->pic_name = 'hogehoge';
-        $box->address = $request->address;
-        $box->box_latitude = $request->ido;
-        $box->box_longitude = $request->keido;
-        $box->u_id = '1';
-        $box->save(); 
-        $box->tags()->attach($tags_id);// 投稿ににタグ付するために、attachメソッドをつかい、モデルを結びつけている中間テーブルにレコードを挿入します。
+        $boxes = new Box;
+
+        //画像投稿
+        if($fileName = $request->file_name){
+        //保存するファイルに名前をつける
+          $path = Storage::disk('s3')->putFile('/boxdemo', $fileName, 'public');
+          $boxes->file_name = Storage::disk('s3')->url($path);
+         }else{
+        //画像が登録されなかった時はから文字をいれる
+          $fileName = "";
+          $boxes->file_name = $fileName;
+         }
+    
+        $boxes->place_name = $request->place_name;
+        $boxes->message = $request->message;
+        $boxes->url = $request->url;
+        $boxes->address = $request->address;
+        $boxes->box_latitude = $request->ido;
+        $boxes->box_longitude = $request->keido;
+        $boxes->u_id = auth()->id();
+        $boxes->save(); 
+        $boxes->tags()->attach($tags_id);// 投稿ににタグ付するために、attachメソッドをつかい、モデルを結びつけている中間テーブルにレコードを挿入します。
         return view('endpost');
     }
     
@@ -135,15 +156,9 @@ class MainController extends Controller
     }
     
     
-    
-    //詳細表示（未実装）
-    public function detail($box_id){
-        
-        $box = Box::where('id', $box_id)->get();
-        // $books = Book::where('user_id', Auth::user()->id)->find($book_id);
-        return view('index', [
-            'box' => $box
-        ]);
+    //チュートリアル
+    public function tutorial(){
+        return view('suspend');
     }
     
 

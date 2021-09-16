@@ -1,4 +1,4 @@
-;(function($, window, undefined){
+(function($, window, undefined){
 
 
     // データリスト、東京都のラーメン＆つけ麺

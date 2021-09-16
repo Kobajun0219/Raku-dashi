@@ -31,7 +31,7 @@
     
 
     <div class="input-group pl-2 pr-2">
-    <input type="text" id="address" value="{{old('address')}}" class="form-control" placeholder="住所を入力">
+    <input type="text" id="address" value="{{old('address')}}" class="form-control" placeholder="住所で検索">
     <button class="btn btn-outline-secondary"value="検索" id="button"><i class="fas fa-search-location"></i></button>
     </div>
     
@@ -81,15 +81,15 @@
                             <div>
                                 
                               <div style="text-align:center;">
-                              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal{{$box->id}}" id="detail{{$box->id}}">
-                              <img src="{{url('image/02.png')}}">
+                              <button type="button" class="btn pr-1 pl-1 pb-0" data-bs-toggle="modal" data-bs-target="#exampleModal{{$box->id}}" id="detail{{$box->id}}" style="background-color:#FCE38A;">
+                              <i class="far fa-comment-alt fa-2x"></i>
                               </button>
                               </div>
                               
                               <!--modal中身-->
-                              <div class="modal fade" id="exampleModal{{$box->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:400px;">
+                              <div class="modal fade" id="exampleModal{{$box->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
+                                <div class="modal-content" style="height:600px; max-width:400px;">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModal{{$box->id}}">
                                         <a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank"><i class="fas fa-map-marker-alt"></i>
@@ -103,33 +103,48 @@
                                         
                                     </div>
                                     <div class="modal-body">
+                                        @if ($box->file_name == "")
                                         <img src="{{url('image/raku.png')}}" style="max-width:100%;">
-                                        <div>{{$box->message}}</div>
-                                        <div>
+                                        @else
+                                        <img src="{{$box->file_name}}" style="max-width:100%;">
+                                        @endif
+                                        <div class="p-1">{{$box->message}}</div>
+                                        <div class="border-bottom pb-1 mb-1">
                                         <!--タグを表示させるループ処理-->
                                         @foreach ($box->tags as $tag)
                                         <button class="btn btn-outline-warning text-body font-weight-bold no-gutters">{{$tag->tag_name}}</button>
                                         @endforeach
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
+                                    <!--</div>-->
+                                    <!--<div class="modal-footer">-->
                                 
-                                          <!--コメント入力欄-->
-                                          <form action="{{ url('comment') }}" method="POST" class="form-horizontal"> 
+                                        <!--コメント入力欄-->
+                                          <form action="{{ url('comment') }}" method="POST" class="form-horizontal" enctype="multipart/form-data"> 
                                                 {{ csrf_field() }}
-                                                 <input type="text" name="comment" class="form-control　c_text" placeholder="コメントを入力">
+                                                 <div>BOXに出した服を投稿しよう！</div>
+                                                 <input type="text" name="comment" class="form-control c_text" placeholder="コメントを入力">
+                                                 <label for="file_upload" class="form-control p-1"id="label">
+                                                 <div id="file_n">ファイルを選択</div>
+                                                 <input type="file"  id="file_upload" name="file_name" class="file_upload c_box_id" value="{{old('file_name')}}" style="display:none;">
+                                                 </label>
                                                  <input type="hidden" name="box_id" class="form-control c_box_id" value="{{$box->id}}">
-                                                 <button type="submit" class="btn" style="background-color:#FCE38A;">送信</button>
+                                                 <button type="submit" class="btn" style="background-color:#FCE38A; display: block; margin: 0 0 0 auto;">送信</button>
                                           </form>
-                                          <!--コメント入力欄終わり-->
-                                  
+                                        <!--コメント入力欄終わり-->
+                                          
                                         <!--コメント一覧-->
-                                        <div style="width: 100%;">
-                                           @foreach ($box->comments as $comment)
-                                            <div>{{$comment->comment}}</div>
+
+                                          @foreach ($box->comments as $comment)
+                                          <div style="width: 100%;" class="border-top pt-1 mt-1">
+                                            <div class="p-1">{{$comment->comment}}</div>
+                                            @if ($comment->file_name == true)
+                                            <img src="{{$comment->file_name}}" style="max-width:100%;">
+                                            @endif
                                             <div class="float-right">{{$comment->created_at}}</div>
-                                        　 @endforeach
-                                        </div>
+                                          </div>
+                                        　@endforeach
+                                       
+                                        
                                           <!--コメント一覧終わり-->
                                     </div>
                                     </div>
@@ -170,35 +185,30 @@
     </div>
     
 <!--jsにでーたおくるためのものです消さないでください！-->
-<div style="display:none;">{{$keynum = 1}}</div>
+<!--<div style="display:none;"></div>-->
 
 <!--下記スクリプトタグはｊｓに必要なデータを送る処理-->
 <script>
-
-
-let boxes = @json($boxes);
-let keynum= {{$keynum}};
-
+let toukou = @json($boxes);
 let my_lat = '{{$my_lat}}';
 let my_long = '{{$my_long}}';
+</script>
 
-// console.log(boxes);
-// console.log(my_lat);
-// console.log(my_long);
+<script>
+  $('#file_upload').on('change', function () {
+  var file = $(this).prop('files')[0];
+  $('#file_n').text(file.name);
+  });
 </script>
 
 
-
-<!--地図用のJS-->
-<script src="{{ asset('js/result.js') }}"></script>
 
 
 <!--google map api 読み込み-->
 <script src="https://maps.googleapis.com/maps/api/js?key={{config('app.api')}}&libraries=geometry"></script>
-<script src="{{ asset('js/distance.js') }}"></script>
+<script src="{{ asset('js/result.js') }}"></script>
+
+<!--like機能用のJS-->
 <script src="{{ asset('js/like.js') }}"></script>
-<script>
-    console.log(position.coords.latitude);
-</script>
 
 @endsection

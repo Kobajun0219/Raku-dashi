@@ -10,7 +10,9 @@
 "Name": "お名前",
 "E-Mail Address": "メールアドレス",
 "Password": "パスワード",
+"NewPassword": "新しいパスワード",
 "Confirm Password": "パスワード(確認用)",
+"Confirm NewPassword": "新しいパスワード(確認用)",
 "Remember Me": "ログイン状態を保存",
 
 "Hello!": "ご利用ありがとうございます。",
@@ -25,7 +27,10 @@
 "Before proceeding, please check your email for a verification link.": "全ての機能をご利用になる前にメールアドレスの有効化をお願いします。",
 "If you did not receive the email": "メールを受け取っていない場合には",
 "click here to request another":"もう一度認証メールを受信する",
-"A fresh verification link has been sent to your email address.":"認証メールをお送りしました。"
+"A fresh verification link has been sent to your email address.":"認証メールをお送りしました。",
 
+"Verify Email Address": "メールアドレスの有効化",
+"Please click the button below to verify your email address.": "下記のボタンをクリックしてメールアドレスの有効化をしてください。",
+"If you did not create an account, no further action is required.": "もしアカウントを作成していない場合にはこのメールは無視してください。"
 
 }
