@@ -1,3 +1,10 @@
+//ファイルの名前表示処理
+  $('#file_upload').on('change', function () {
+  var file = $(this).prop('files')[0];
+  $('#file_n').text(file.name);
+  });
+
+
 var mapDiv = document.getElementById("mapDiv");     // 地図を置く場所
 var gmap;  　                                       // Googleマップの Map オブジェクトのための変数
 var mark;                                           // Googleマップの Marker オブジェクトのための変数

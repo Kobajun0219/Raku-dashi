@@ -1,32 +1,26 @@
-// 下記マップ出現、ドロップ処理-------------------
-
-// function show(){
-//     console.log("show");
-//     document.getElementById("map_button").onclick = function() {
-//             console.log("動くよ");
-//         document.getElementById("show_s").style.display ="block";
-//     }
-// }
-
-// show();
+//ファイルの名前表示処理
+  $('#file_upload').on('change', function () {
+  var file = $(this).prop('files')[0];
+  $('#file_n').text(file.name);
+  });
 
 
 // 送信ボタンを有効にする機能
-    window.addEventListener('DOMContentLoaded',function(){
-    document.getElementById('show_s').disabled = true;
-    document.getElementById('address').addEventListener('keyup',function(){
-    if (this.value.length < 1) {
-    document.getElementById('show_s').disabled = true;
-    } else {
-    document.getElementById('show_s').disabled = false;
-    }
-    },false);
-    document.getElementById('address').addEventListener('change',function(){
-    if (this.value.length < 1) {
-    document.getElementById('show_s').disabled = true;
-    }
-    },false);
-    },false);
+    // window.addEventListener('DOMContentLoaded',function(){
+    // document.getElementById('show_s').disabled = true;
+    // document.getElementById('address').addEventListener('keyup',function(){
+    // if (this.value.length < 1) {
+    // document.getElementById('show_s').disabled = true;
+    // } else {
+    // document.getElementById('show_s').disabled = false;
+    // }
+    // },false);
+    // document.getElementById('address').addEventListener('change',function(){
+    // if (this.value.length < 1) {
+    // document.getElementById('show_s').disabled = true;
+    // }
+    // },false);
+    // },false);
 
 
 var getMap = (function() {
@@ -233,6 +227,7 @@ var getMap = (function() {
             var address = document.getElementById("address").value;
             // 取得した住所を引数に指定してcodeAddress()関数を実行
             codeAddress(address);
+            document.getElementById('show_s').disabled = false;
           }
 
           //読み込まれたときに地図を表示
@@ -309,3 +304,17 @@ var getMap = (function() {
 
 //   reader.readAsDataURL(file);
 // }
+
+
+
+// 下記マップ出現、ドロップ処理-------------------
+
+// function show(){
+//     console.log("show");
+//     document.getElementById("map_button").onclick = function() {
+//             console.log("動くよ");
+//         document.getElementById("show_s").style.display ="block";
+//     }
+// }
+
+// show();

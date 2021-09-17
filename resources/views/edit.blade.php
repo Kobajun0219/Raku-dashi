@@ -39,7 +39,7 @@
         </h4>
 
         <!-- 登録フォーム -->
-        <form action="{{ url('update') }}" method="POST" class="form-horizontal">
+        <form action="{{ url('update') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="input-group">
@@ -58,8 +58,14 @@
                 <div class="col-6">
                   画像
                   <label for="file_upload" class="form-control"id="label">
-                  <div id="file_n">ファイルを選択</div>
-                    <input type="file" id="file_upload" name="file_name" class="form-control" value="{{old('url') ?: $box->file_name}}" style="display:none;">
+                  <div id="file_n">
+                    @if ($box->file_name == true)
+                     {{old('file_name') ?: $box->file_name}}
+                    @else
+                     ファイルを選択
+                    @endif
+                  </div>
+                    <input type="file" id="file_upload" name="file_name" class="form-control" value="{{old('file_name') ?: $box->file_name}}" style="display:none;">
                   </label>
                 </div>
             </div>
@@ -92,7 +98,7 @@
               
               <!-- 登録ボタン -->
               <div class="text-right">
-              <button type="submit" class="btn" id="show_s" style="background-color:#FCE38A;" disabled>編集</button>
+              <button type="submit" class="btn" style="background-color:#FCE38A;">編集</button>
              </div>
             
             </div>

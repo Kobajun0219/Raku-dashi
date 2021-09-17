@@ -36,7 +36,7 @@ class BoxesTableSeeder extends Seeder
         
         Tag::create([
             'id' => 1,
-            'tag_name' => '何でも',
+            'tag_name' => '自社製品',
         ]);
         
         Box_tag::create([

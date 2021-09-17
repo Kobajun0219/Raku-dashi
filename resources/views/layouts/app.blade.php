@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Raku-dashi') }}</title>
     
-    <link rel="icon" href="{{url('image/01.png')}}">
+    <link rel="icon" href="{{url('image/chara.png')}}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -41,7 +41,7 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content" style="height:600px; max-width:400px;">
           <div class="modal-header">
-            <h5 class="modal-title" id="add">PICK UP NEWS</h5>
+            <h5 class="modal-title" id="add">PICK UP NEWS</h5><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
           <div class="modal-body">
             <div><h5 class="modal-title pb-1 mb-1" id="add">真のコスト</h5></div>

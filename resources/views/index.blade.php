@@ -50,7 +50,7 @@
       <!--<img id="getImg" src="" hidden>-->
       <canvas id="cap" width="300" height="60" style="display:none;"></canvas>
     
-    <div class="pl-2 pr-2">
+    <div class="pl-2 pr-2 pb-3">
     @if (count($boxes) > 0)
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <table class="table table-sm">
@@ -97,10 +97,10 @@
                                         </a>
                                         
                                         @if ($box->url == true)
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn" style="background-color:#FCE38A;"><a href="{{$box->url}}">URL</a></button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn" style="background-color:#FCE38A;"><a href="{{$box->url}}">サイトURL</a></button>
                                         @endif
                                         </h5>
-                                        
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     </div>
                                     <div class="modal-body">
                                         @if ($box->file_name == "")
@@ -119,7 +119,7 @@
                                         <!--コメント入力欄-->
                                           <form action="{{ url('comment') }}" method="POST" class="form-horizontal" enctype="multipart/form-data"> 
                                                 {{ csrf_field() }}
-                                                 <div>BOXに出した服を投稿しよう！</div>
+                                                 <div style="font-weight:bold;">BOXに出した服を投稿しよう！</div>
                                                  <input type="text" name="comment" class="form-control c_text" placeholder="コメントを入力">
                                                  <label for="file_upload" class="form-control p-1"id="label">
                                                  <div id="file_n">ファイルを選択</div>
@@ -190,16 +190,6 @@ let toukou = @json($boxes);
 let my_lat = '{{$my_lat}}';
 let my_long = '{{$my_long}}';
 </script>
-
-<script>
-  $('#file_upload').on('change', function () {
-  var file = $(this).prop('files')[0];
-  $('#file_n').text(file.name);
-  });
-</script>
-
-
-
 
 <!--google map api 読み込み-->
 <script src="https://maps.googleapis.com/maps/api/js?key={{config('app.api')}}&libraries=geometry"></script>

@@ -69,7 +69,7 @@
             <div class="form-content">
                 <div class="col-sm-6">
                 <h5 class="font-weight">タグ<img src="https://img.icons8.com/material-outlined/24/000000/tag-window.png"/></h5>
-                <input name='tags' id='input-custom-dropdown' class='some_class_name' value='{{old('tags') ?: '#他社製品OK, #自社製品'}}'>
+                <input name='tags' id='input-custom-dropdown' class='some_class_name' value='{{old('tags') ?: '#他社製品OK, #自社製品のみ'}}'>
                 </div>
             </div>
             <!--ここまで-->
@@ -84,7 +84,7 @@
                 
                 </label></div>
               <input type="text" name="address" id="address" value="{{old('address') ?: 'ユニクロ渋谷店'}}">
-              <button type="button" value="検索" id="map_button" class="btn btn-secondary"><img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/></button>
+              <button type="button" id="map_button" class="btn btn-secondary"><img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/></button>
               
               <!-- 登録ボタン -->
               <div class="text-right">
@@ -108,12 +108,6 @@
     </div>
     <!--ここまで-->
 </div>
-    <script>
-      $('#file_upload').on('change', function () {
-      var file = $(this).prop('files')[0];
-      $('#file_n').text(file.name);
-      });
-    </script>
 
     <script src="{{ asset('/js/tag.js') }}"></script>
     <script src="{{ asset('/js/edit.js') }}"></script>

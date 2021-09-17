@@ -9,8 +9,10 @@ use App\Box_tag;
 use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 use App\Jobs\LikeJob;
+use Config;
 
 class UserController extends Controller
 {
@@ -64,30 +66,26 @@ class UserController extends Controller
             array_push($tags_id, $tag->id);
         };
         
+        $boxes = Box::find($request->id);
         //画像投稿
-        if($file = $request->file_name){
-        //保存するファイルに名前をつける    
-           $fileName = time().'.'.$file->getClientOriginalExtension();
-        //Laravel直下のpublicディレクトリに新フォルダをつくり保存する
-           $target_path = public_path('/uploads/');
-           $file->move($target_path,$fileName);
-               
+        if($fileName = $request->file_name){
+        //保存するファイルに名前をつける
+          $path = Storage::disk('s3')->putFile('/boxdemo', $fileName, 'public');
+          $boxes->file_name = Storage::disk('s3')->url($path);
          }else{
         //画像が登録されなかった時はから文字をいれる
-           $name = "";
+          $fileName = "";
+          $boxes->file_name = $fileName;
          }
          
-         
-        $boxes = Box::find($request->id);
         $boxes->place_name = $request->place_name;
         $boxes->message = $request->message;
         $boxes->url = $request->url;
-        $boxes->file_name = $fileName;
         $boxes->address = $request->address;
         $boxes->box_latitude = $request->ido;
         $boxes->box_longitude = $request->keido;
         $boxes->save(); 
-        $boxes->tags()->attach($tags_id);// 投稿ににタグ付するために、attachメソッドをつかい、モデルを結びつけている中間テーブルにレコードを挿入します。
+        $boxes->tags()->syncWithoutDetaching($tags_id);// 投稿ににタグ付するために、attachメソッドをつかい、モデルを結びつけている中間テーブルにレコードを挿入します。
         return view('endedit');
     }
     

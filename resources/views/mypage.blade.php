@@ -15,7 +15,7 @@
 
     </script>
     
-        <div>Hi! {{Auth::user()->name}}さん</div>
+        <h3>Hi! {{Auth::user()->name}}さん</h1>
 
 
         <div class="pl-2 pr-2">
@@ -51,7 +51,16 @@
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content" style="height:600px; max-width:400px;">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModal{{$box->id}}"><a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank">{{$box->place_name}}</a></h5>
+                                        <h5 class="modal-title" id="exampleModal{{$box->id}}">
+                                        <a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank">
+                                        {{$box->place_name}}
+                                        </a>
+                                            
+                                        @if ($box->url == true)
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn" style="background-color:#FCE38A;"><a href="{{$box->url}}">サイトURL</a></button>
+                                        @endif
+                                        </h5>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     </div>
                                     <div class="modal-body">
                                         @if ($box->file_name == "")
