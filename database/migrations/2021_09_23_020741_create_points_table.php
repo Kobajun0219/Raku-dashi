@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNewsTable extends Migration
+class CreatePointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('news_title');
-            $table->text('news_url');
-            $table->text('news_comment');
+        Schema::create('points', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedInteger('u_id');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('point');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('points');
     }
 }

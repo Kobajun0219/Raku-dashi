@@ -58,7 +58,7 @@
                 <div class="col-6">
                   画像
                   <label for="file_upload" class="form-control"id="label">
-                  <div id="file_n">
+                  <div id="file_n" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                     @if ($box->file_name == true)
                      {{old('file_name') ?: $box->file_name}}
                     @else
@@ -104,8 +104,8 @@
             </div>
             
             <!-- 緯度、軽度をhiddenで情報送ってます -->
-                <input type="hidden" id="lat" value="" name="ido">
-                <input type="hidden" id="lng" value="" name="keido">
+                <input type="hidden" id="lat" value="{{$box->box_latitude}}" name="ido">
+                <input type="hidden" id="lng" value="{{$box->box_longitude}}" name="keido">
                 
                 <input type="hidden" id="" value="{{ $box->id }}" name="id">
 
@@ -115,7 +115,7 @@
 
 
   <!--マップ出す位置-->
-    <div class="map_box01 ">
+    <div class="map_box01" style="padding-bottom: 35px;">
       <div id="map-canvas" style="max-width:500px;height:300px;"></div>
     </div>
     <!--ここまで-->

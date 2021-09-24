@@ -8,6 +8,7 @@ use App\Comment;
 use App\Tag;
 use App\Box_tag;
 use App\Like;
+use App\Point;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -20,20 +21,12 @@ class MainController extends Controller
     
     
     //一覧画面
-    public function index(){
+    public function index(Request $request){
         $boxes = Box::withCount('likes')->orderBy('created_at', 'asc')->get();
-
-        
-        // foreach ($boxes as $box){
-        //     $box->distance = distance($box->box_latitude,$box->box_longitude);
-        //     // $boxes = $box->distance;
-        // }
-        
         $my_lat = NULL;
         $my_long = NULL;
-        
-        
-       return view('index', ['boxes' => $boxes, 'my_lat'=> $my_lat, 'my_long'=>$my_long]);
+        $com = $request->old();
+       return view('index', ['boxes' => $boxes, 'my_lat'=> $my_lat, 'my_long'=>$my_long, 'com'=>$com]);
     
     }
     
@@ -72,7 +65,16 @@ class MainController extends Controller
         $comment->u_id = auth()->id();
         $comment->box_id = $request->box_id;
         $comment->save(); 
-        return view('endcomment');
+        
+        //point
+        $point = new Point;
+        $point->u_id = auth()->id();
+        $point->point = "10";
+        $point->save(); 
+        
+        //redirect先でcom.bladeを表示させるために配列を作成
+        $com = ["コメント投稿が"];
+        return redirect('/')->withInput($com);
     }
     
     
@@ -132,7 +134,16 @@ class MainController extends Controller
         $boxes->u_id = auth()->id();
         $boxes->save(); 
         $boxes->tags()->attach($tags_id);// 投稿ににタグ付するために、attachメソッドをつかい、モデルを結びつけている中間テーブルにレコードを挿入します。
-        return view('endpost');
+        
+        //point
+        $point = new Point;
+        $point->u_id = auth()->id();
+        $point->point = "20";
+        $point->save(); 
+        
+        //redirect先でcom.bladeを表示させるために配列を作成
+        $com = ["Boxの設置が"];
+        return redirect('/')->withInput($com);
     }
     
     //現在地から

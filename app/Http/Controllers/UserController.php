@@ -7,6 +7,8 @@ use App\Comment;
 use App\Tag;
 use App\Box_tag;
 use App\Like;
+use App\Point;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -17,16 +19,26 @@ use Config;
 class UserController extends Controller
 {
     //表示
-    public function mypage(){
+    public function mypage(Request $request){
         $boxes = Box::withCount('likes')->where('u_id',auth()->id())->orderBy('created_at', 'asc')->get();
+        $points = Point::where('u_id',auth()->id())->get();
         
-        return view('mypage', ['boxes' => $boxes]);
+        function count($points){
+            $point_count=(int)"";
+            foreach($points as $point){
+            $point_count = $point_count+$point->point;
+            }
+            return $point_count;
+        }
+        $point = count($points);
+        
+        $com = $request->old();
+        return view('mypage', ['boxes' => $boxes,'point' => $point,'com' => $com]);
     }
     
     //編集画面
     public function edit($id){
         $box = Box::find($id);
-        // dd($box);
         return view('edit', ['box' => $box]);
     }
     
@@ -39,13 +51,10 @@ class UserController extends Controller
             'ido' => 'required|max:50',
             'keido' => 'max:50',
             'address' => 'required|max:255',
-            
-            
         ]);
-    
         //バリデーション:エラー 
         if ($validator->fails()) {
-            return redirect('/post')
+            return redirect('/edit/'.$request->id)
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -78,6 +87,8 @@ class UserController extends Controller
           $boxes->file_name = $fileName;
          }
          
+        Box_tag::where("box_id", $request->id)->delete();
+         
         $boxes->place_name = $request->place_name;
         $boxes->message = $request->message;
         $boxes->url = $request->url;
@@ -85,16 +96,63 @@ class UserController extends Controller
         $boxes->box_latitude = $request->ido;
         $boxes->box_longitude = $request->keido;
         $boxes->save(); 
-        $boxes->tags()->syncWithoutDetaching($tags_id);// 投稿ににタグ付するために、attachメソッドをつかい、モデルを結びつけている中間テーブルにレコードを挿入します。
-        return view('endedit');
+        $boxes->tags()->syncWithoutDetaching($tags_id);
+        
+        //redirect先でcom.bladeを表示させるために配列を作成
+        $com = ["投稿BOXの変更が"];
+        return redirect('mypage')->withInput($com);
     }
     
     
     //削除
     public function destroy(Box $box){
-        
         $box->delete();       
-        return redirect('mypage'); 
+        
+         //redirect先でcom.bladeを表示させるために配列を作成
+        $com = ["削除が"];
+        return redirect('mypage')->withInput($com); 
     }
     
+    //プロフィール編集画面遷移
+    public function change($id){
+        $user = User::find($id);
+        return view('edit_user', ['user' => $user]);
+    }
+    
+    
+    //プロフィール編集
+    public function edit_user(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            // 'email' => 'required|emial|max:255|unique:users',
+            
+        ]);
+    
+        //バリデーション:エラー 
+        if ($validator->fails()) {
+            return redirect('/change_mypage'.auth()->id())
+                ->withInput()
+                ->withErrors($validator);
+        }
+        
+        $users = User::find($request->id);
+        //画像投稿
+        if($fileName = $request->file_name){
+        if(strpos($request->image,'http') == false){
+            //保存するファイルに名前をつける
+              $path = Storage::disk('s3')->putFile('/prof', $fileName, 'public');
+              $users->image = Storage::disk('s3')->url($path);
+         }
+        }
+        $users->name = $request->name;
+        // $users->email = $request->email;
+        $users->save(); 
+        
+        //redirect先でcom.bladeを表示させるために配列を作成
+            $com = ["マイページの変更が"];
+        return redirect('mypage')->withInput($com);
+    }
+    
+    
+
 }

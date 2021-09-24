@@ -59,7 +59,7 @@
                 <div class="col-6">
                   画像
                   <label for="file_upload" class="form-control"id="label">
-                  <div id="file_n">ファイルを選択</div>
+                  <div id="file_n" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">ファイルを選択</div>
                     <input type="file" id="file_upload" name="file_name" class="form-control" value="{{old('file_name')}}" style="display:none;">
                   </label>
                 </div>

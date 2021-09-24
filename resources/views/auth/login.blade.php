@@ -1,6 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+.button { 
+  color: #EEEEE;
+  font-size: 15px;
+  background-color: #00C300;  
+}
+
+.button:hover {
+  color: #EEEEE;
+  background-color: #00E000
+}
+
+.button:active {
+  background-color: #00B300
+}
+</style>
+
+    <!-- ログアウト後に表示-->
+    @include('common.com')
+    <!-- ログアウト後に表示-->
 
 <div class="container">
     <div class="row justify-content-center">
@@ -9,10 +29,14 @@
                 <div class="card-header" style="background-color:#FCE38A;">{{ __('Login') }}</div>
                 <div class="card-body">
                     <div>全ての機能を利用するには会員登録が必要です</div>
-                    <div class="pt-2 text-right">
-                    <button type="submit" class="btn" style="background-color:#FCE38A;">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </button>
+                    <div class="pt-2 text-center">
+                        <button type="submit" class="btn" style="background-color:#FCE38A;">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register with mail') }}</a>
+                        </button>
+                        <button type="submit" class="btn mt-2" style="background-color:#06C755;">
+                        <a href="{{ route('line.login') }}" style="color: white;"><img src="{{url('image/btn_base.png')}}" style="height:39px;" class="pr-3">{{ __('Register with Line') }}</a>
+                        </button>
+                        <!--<a href="login/facebook">facebookでログイン</a>-->
                     </div>
                 </div>
             </div>
@@ -85,8 +109,13 @@
                         </div>
                     </form>
                 </div>
+                <div class="mx-auto">もしくは</div>
+                <a href="{{ route('line.login') }}" class="mx-auto m-2" style="height:50px;"><img src="{{url('image/btn_login_base.png')}}" style="height:100%;"></a>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
+
+

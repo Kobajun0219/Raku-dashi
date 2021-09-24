@@ -5,6 +5,10 @@
     <!-- バリデーションエラーの表示に使用-->
     @include('common.errors')
     <!-- バリデーションエラーの表示に使用-->
+    
+    <!-- 投稿後に表示-->
+    @include('common.com')
+    <!-- 投稿後に表示-->
 
 
   <!--<table class="table table-striped task-table">-->
