@@ -1,0 +1,16 @@
+  
+  
+  index.blade.php
+  
+  
+  <!--<table class="table table-striped task-table">-->
+  <!--  <thead>-->
+  <!--    <tr>-->
+  <!--      <th>順番</th>-->
+  <!--      <th>ID</th>-->
+  <!--      <th>店名</th>-->
+  <!--      <th>現在地からの距離</th>-->
+  <!--    </tr>-->
+  <!--  </thead>-->
+  <!--  <tbody id="data-list"></tbody>-->
+  <!--</table>-->

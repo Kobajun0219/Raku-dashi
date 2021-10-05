@@ -33,7 +33,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
 
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/db3ae15c2d.js" crossorigin="anonymous"></script>
 </head>
 
     <!-- Modal -->
@@ -75,19 +75,19 @@
         
     <footer　id="" class="fixed-bottom">
         <div id="app">
-            <nav class="navbar shadow-sm" style="background-color:#FCE38A;">
+            <nav class="navbar shadow-sm pt-1 pb-1 pr-1" style="background-color:#FCE38A;">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <i class="fas fa-home"></i>
-                    </a>
+                    <button class="navbar-toggler">
+                        <a href="{{ url('/') }}"><i class="fas fa-home"></i><div class="sub">Home</div></a>
+                    </button>
                     
                     <button class="navbar-toggler" data-bs-toggle="modal" data-bs-target="#add">
-                      <i class="fas fa-globe-asia"></i>
+                      <i class="fas fa-globe-asia"></i><div class="sub">News</div>
                     </button>
                     
 
                     <button class="navbar-toggler" type="button">
-                        <a href="{{ url('post') }}"><i class="fas fa-plus"></i></a>
+                        <a href="{{ url('post') }}"><i class="fas fa-plus"></i><div class="sub">Post</div></a>
                     </button>
                     
                     
@@ -98,7 +98,7 @@
                     
                     <div class="dropup">
                       <button class="navbar-toggler" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-tshirt"></i>
+                        <i class="fas fa-tshirt"></i><div class="sub">Menu</div>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style = "left: -100px;">
                             @guest
@@ -111,6 +111,10 @@
                                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                         <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                                     </li>
+                                    <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
+                                    <a class="nav-link" href="{{ url('tutorial') }}">チュートリアル</a>
+                                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+                                </li>
                                 @endif
                             @else
                                 <li class="dropdown-item list-group-item-action">

@@ -33,7 +33,7 @@
                         <button type="submit" class="btn" style="background-color:#FCE38A;">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register with mail') }}</a>
                         </button>
-                        <button type="submit" class="btn mt-2" style="background-color:#06C755;">
+                        <button type="submit" class="btn mt-2" style="background-color:#06C755;width: 230px;">
                         <a href="{{ route('line.login') }}" style="color: white;"><img src="{{url('image/btn_base.png')}}" style="height:39px;" class="pr-3">{{ __('Register with Line') }}</a>
                         </button>
                         <!--<a href="login/facebook">facebookでログイン</a>-->
@@ -110,7 +110,9 @@
                     </form>
                 </div>
                 <div class="mx-auto">もしくは</div>
-                <a href="{{ route('line.login') }}" class="mx-auto m-2" style="height:50px;"><img src="{{url('image/btn_login_base.png')}}" style="height:100%;"></a>
+                        <button type="submit" class="btn mx-auto m-2" style="background-color:#06C755;width: 230px;">
+                        <a href="{{ route('line.login') }}" style="color: white;"><img src="{{url('image/btn_base.png')}}" style="height:39px;" class="pr-3">{{ __('Login with Line') }}</a>
+                        </button>
             </div>
         </div>
     </div>

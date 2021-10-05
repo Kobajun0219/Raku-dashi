@@ -11,17 +11,6 @@
     <!-- 投稿後に表示-->
 
 
-  <!--<table class="table table-striped task-table">-->
-  <!--  <thead>-->
-  <!--    <tr>-->
-  <!--      <th>順番</th>-->
-  <!--      <th>ID</th>-->
-  <!--      <th>店名</th>-->
-  <!--      <th>現在地からの距離</th>-->
-  <!--    </tr>-->
-  <!--  </thead>-->
-  <!--  <tbody id="data-list"></tbody>-->
-  <!--</table>-->
   <style>
       .my-custom-scrollbar {
         position: relative;
@@ -75,7 +64,7 @@
                         <!--tag表示-->
                         <td nowrap style="width:35%">
                             <div style="display:flex; flex-wrap: wrap;">
-                            @foreach ($box->tags as $tag)<div class="btn btn-outline-warning text-body font-weight-bold btn-sm pl-1 pr-1" style="font-size: 5px;">{{$tag->tag_name}}</div>
+                            @foreach ($box->tags as $tag)<div class="btn btn-outline-warning text-body font-weight-bold btn-sm pl-1 pr-1" style="font-size: 7px;">{{$tag->tag_name}}</div>
                             @endforeach
                             </div>
                         </td>
