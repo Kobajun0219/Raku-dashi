@@ -36,36 +36,17 @@
     <script src="https://kit.fontawesome.com/db3ae15c2d.js" crossorigin="anonymous"></script>
 </head>
 
-    <!-- Modal -->
-    <div class="modal fade" id="add" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content" style="height:600px; max-width:400px;">
-          <div class="modal-header">
-            <h5 class="modal-title" id="add">PICK UP NEWS</h5><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-          <div class="modal-body">
-            <div><h5 class="modal-title pb-1 mb-1" id="add">真のコスト</h5></div>
-            <iframe style="max-width:100%;" width="400" height="280" src="https://www.youtube.com/embed/nxhCpLzreCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-            <div class="border-bottom pb-1 mb-2">真のコストは、人々と地球に対するファッションの影響を探るドキュメンタリー映画です。
-            <br>ストーリーライン：私たちが着る服、それを作る人々、そして業界が私たちの世界に与えている影響についてです。衣料の価格は数十年にわたって減少してきましたが、
-            人的および環境的コストは劇的に増大しました。真のコストは、未知の物語の幕を引き、私たちに問題定義をしてくれます。</div>
-
-            <div><h5 class="modal-title pb-1 mb-1" id="add">大量廃棄社会①</h5></div>
-            <iframe style="max-width:100%;" width="400" height="280" src="https://www.youtube.com/embed/OpP2mFS7yrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <div class="border-bottom pb-1 mb-1">マスメディアでは報じられないアパレル業界の闇</div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
+    <!-- Modal for news-->
+    @include('modal.news')
+    
+    <!--modal for チュートリアル-->
+    @include('modal.tutorial')
 
 <body>
     <header class =" mb-5">
     <div class="row justify-content-center align-items-center fixed-top" style="background-color:#FCE38A; height: 60px;">
-    <div style="max-width:180px;"><img src="{{url('image/chara.png')}}" style="width:20%;"><img src="{{url('image/Rakupo!.png')}}" style="width:80%;"></div>
+    <div style="max-width:180px;"><img src="{{url('image/chara.png')}}" style="width:20%;"><a href="{{ url('/') }}"><img src="{{url('image/Rakupo!.png')}}" style="width:80%;"></a></div>
     </div>
-        
     </header>
     
     <main class="py-4">
@@ -75,7 +56,7 @@
         
     <footer　id="" class="fixed-bottom">
         <div id="app">
-            <nav class="navbar shadow-sm pt-1 pb-1 pr-1" style="background-color:#FCE38A;">
+            <nav class="navbar shadow-sm pt-1 pb-1 pr-1 pl-1" style="background-color:#FCE38A;">
                 <div class="container">
                     <button class="navbar-toggler">
                         <a href="{{ url('/') }}"><i class="fas fa-home"></i><div class="sub">Home</div></a>
@@ -138,12 +119,17 @@
                                 </li>
                                 
                                 <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
-                                    <a class="nav-link" href="{{ url('tutorial') }}">チュートリアル</a>
+                                    <a class="nav-link"　data-bs-toggle="modal" data-bs-target="#tutorial">チュートリアル</a>
                                     <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                                 </li>
                                 
                                 <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
                                     <a class="nav-link" href="https://lin.ee/fN1kM8t">お問い合わせ</a>
+                                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+                                </li>
+                                
+                                <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
+                                    <a class="nav-link" href="{{url('policy')}}" style="font-size:10px;">プライバシーポリシー</a>
                                     <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                                 </li>
                                 

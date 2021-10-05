@@ -137,7 +137,7 @@ class UserController extends Controller
         
         $users = User::find($request->id);
         //画像投稿
-        if($fileName = $request->file_name){
+        if($fileName = $request->image){
         if(strpos($request->image,'http') == false){
             //保存するファイルに名前をつける
               $path = Storage::disk('s3')->putFile('/prof', $fileName, 'public');

@@ -168,8 +168,8 @@ class MainController extends Controller
     
     
     //チュートリアル
-    public function tutorial(){
-        return view('suspend');
+    public function policy(){
+        return view('policy');
     }
     
 

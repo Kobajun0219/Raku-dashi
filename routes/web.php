@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/', 'MainController@index');
 Route::post('/myloc', 'MainController@myloc');
-Route::get('/tutorial', 'MainController@tutorial');
+Route::get('/policy', 'MainController@policy');
 
 
 //facebook認証画面に遷移

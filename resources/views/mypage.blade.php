@@ -24,8 +24,8 @@
     @else
     <div class="text-center"><img src="{{url('image/sample.png')}}" style="width:100px;" class="rounded-circle"></div>
     @endif
-    <button class="btn" style="background-color:#FCE38A; font-size: 5px; display: block; margin: 0 20px 0 auto;">
-    <a href="{{ url('change_mypage/'.auth()->id()) }}">プロフィールを変更する</a>
+    <button class="btn pt-0 pb-0 pr-1 pl-1" style="background-color:#FCE38A; display: block; margin: 0 auto; font-size:20px;">
+    <a href="{{ url('change_mypage/'.auth()->id()) }}"><i class="fas fa-user-cog"></i></a>
     </button>
     <div class="text-center pt-3 pb-2"><h3>Hi!&nbsp;&nbsp;{{Auth::user()->name}}さん</h3></div>
     <div class="text-center pb-2"><h3>貢献度:{{$point}}&nbsp;thanks!</h3></div>
