@@ -93,9 +93,9 @@
                                         <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                                     </li>
                                     <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
-                                    <a class="nav-link" href="{{ url('tutorial') }}">チュートリアル</a>
-                                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
-                                </li>
+                                        <a class="nav-link"　data-bs-toggle="modal" data-bs-target="#tutorial">チュートリアル</a>
+                                        <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+                                    </li>
                                 @endif
                             @else
                                 <li class="dropdown-item list-group-item-action">

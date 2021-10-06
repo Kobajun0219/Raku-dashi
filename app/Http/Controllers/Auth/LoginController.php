@@ -61,7 +61,7 @@ class LoginController extends Controller
     //ログイン後のページ遷移
     public function redirectPath()
     {
-        return '/mypage';
+        return '/success_login';
 
     }
     

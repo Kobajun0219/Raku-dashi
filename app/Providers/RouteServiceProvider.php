@@ -21,7 +21,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    //override by redirectPath() in Logincontrollers
+    public const HOME = '/success_login';
 
     /**
      * Define your route model bindings, pattern filters, etc.

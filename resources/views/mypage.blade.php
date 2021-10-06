@@ -2,31 +2,22 @@
 @extends('layouts.app')
 @section('content')
 
-    <script type="text/javascript">
-
-     
-      function delete_alert(e){
-           if(!window.confirm('本当に削除しますか？')){
-              window.alert('キャンセルされました'); 
-              return false;
-           }
-           document.deleteform.submit();
-        };
-
-    </script>
     <!-- マイページ変更時に表示-->
     @include('common.com')
     <!-- マイページ変更時に表示-->
     
     
-    @if(Auth::user()->image)
-    <div class="text-center"><img src="{{Auth::user()->image}}" style="width:100px;" class="rounded-circle"></div>
-    @else
-    <div class="text-center"><img src="{{url('image/sample.png')}}" style="width:100px;" class="rounded-circle"></div>
-    @endif
-    <button class="btn pt-0 pb-0 pr-1 pl-1" style="background-color:#FCE38A; display: block; margin: 0 auto; font-size:20px;">
-    <a href="{{ url('change_mypage/'.auth()->id()) }}"><i class="fas fa-user-cog"></i></a>
-    </button>
+    <div class="text-center"　style="align-items: flex-end;">
+        @if(Auth::user()->image)
+        <img src="{{Auth::user()->image}}" style="width:100px;" class="rounded-circle">
+        @else
+        <img src="{{url('image/sample.png')}}" style="width:100px;" class="rounded-circle">
+        @endif
+        <button class="btn pt-0 pb-0 pr-1 pl-1" style="background-color:#FCE38A; font-size:20px; margin-top: 50px;">
+        <a href="{{ url('change_mypage/'.auth()->id()) }}"><i class="fas fa-user-cog"></i></a>
+        </button>
+    </div>
+
     <div class="text-center pt-3 pb-2"><h3>Hi!&nbsp;&nbsp;{{Auth::user()->name}}さん</h3></div>
     <div class="text-center pb-2"><h3>貢献度:{{$point}}&nbsp;thanks!</h3></div>
 
@@ -110,19 +101,9 @@
                     <td class="align-middle">
                         <form action="{{ url('edit/'.$box->id) }}" method="POST">
                         {{ csrf_field() }}
-                         <button type="submit" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                         <button type="submit" class="btn pr-1 pl-1 pb-0" style="background-color:#FCE38A;"><i class="fas fa-edit fa-2x"></i></button>
                         </form>
                     </td>
-                    
-                    <!-- 削除ボタン -->
-                    <td class="align-middle">
-                        <form action="{{ url('box/'.$box->id) }}" method="POST">
-                        {{ csrf_field() }}
-                        {{ method_field('delete') }}
-                         <button type="submit" class="btn btn-danger" onClick="delete_alert(event);return false;"><i class="fas fa-trash-alt"></i></button>
-                        </form>
-                    </td>
-                    
                 </tr>
                 @endforeach
             </tbody>

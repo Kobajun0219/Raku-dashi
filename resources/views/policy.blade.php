@@ -78,7 +78,7 @@ Rakupo（以下，「当社」といいます。）は，本ウェブサイト�
 <h3>第10条（お問い合わせ窓口）</h3>
 本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。<br><br>
 
-お問い合わせ先:<a href="https://lin.ee/fN1kM8t">Rakupo運営ライン</a><br>
+お問い合わせ先:<a class="btn-link" href="https://lin.ee/fN1kM8t">Rakupo運営ライン</a><br>
 
 <br>以上
 </div>

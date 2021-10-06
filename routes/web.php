@@ -23,6 +23,8 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::post('/update','UserController@update');
     Route::get('/change_mypage/{id}','UserController@change');
     Route::post('/edit_user','UserController@edit_user');
+    Route::get('/verified','UserController@verified');
+    Route::get('/success_login','UserController@success_login');
     
     Route::post('/like', 'LikeController@like')->name('reviews.like');
 });

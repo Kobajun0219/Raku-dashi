@@ -8,8 +8,8 @@
         
         <script>
               setTimeout(() => {
-                $('#com').fadeOut();
-              }, 2000);
+                $('#com').fadeOut(2000);
+              });
         </script>
     @endif
  @endif

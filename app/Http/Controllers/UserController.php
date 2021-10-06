@@ -153,6 +153,18 @@ class UserController extends Controller
         return redirect('mypage')->withInput($com);
     }
     
+    //メール認証後の処理
+    public function verified(){
+        //redirect先でcom.bladeを表示させるために配列を作成
+            $com = ["メール認証が"];
+        return redirect('mypage')->withInput($com);
+    }
     
-
+    //ログイン後の処理
+    public function success_login(){
+        //redirect先でcom.bladeを表示させるために配列を作成
+            $com = ["ログインが"];
+        return redirect('/')->withInput($com);
+    }
+    
 }
