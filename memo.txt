@@ -14,3 +14,8 @@
   <!--  </thead>-->
   <!--  <tbody id="data-list"></tbody>-->
   <!--</table>-->
+  
+  
+  app.blade.php
+  
+      <script src="{{ asset('js/app.js') }}" defer></script>
