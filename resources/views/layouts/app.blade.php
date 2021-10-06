@@ -13,6 +13,7 @@
     <link rel="icon" href="{{url('image/chara.png')}}">
 
     <!-- Scripts -->
+    
 
 
     <!-- Fonts -->
@@ -94,8 +95,8 @@
                                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                         <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                                     </li>
-                                    <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
-                                        <a class="nav-link"　data-bs-toggle="modal" data-bs-target="#tutorial">チュートリアル</a>
+                                    <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;" data-bs-toggle="modal" data-bs-target="#tutorial">
+                                        <a class="nav-link">チュートリアル</a>
                                         <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                                     </li>
                                 @endif
@@ -120,8 +121,8 @@
                                     </form>
                                 </li>
                                 
-                                <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
-                                    <a class="nav-link"　data-bs-toggle="modal" data-bs-target="#tutorial">チュートリアル</a>
+                                <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;" data-bs-toggle="modal" data-bs-target="#tutorial">
+                                    <a class="nav-link">チュートリアル</a>
                                     <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                                 </li>
                                 
