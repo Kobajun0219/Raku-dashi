@@ -5,7 +5,9 @@
           <div class="modal-header">
             <h5 class="modal-title" id="tutorialLavel">チュートリアル</h5><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body text-center">
+            <img src="{{url('image/チュートリアル.001.jpeg')}}" style="width:100%;">
+            
           </div>
         </div>
       </div>
