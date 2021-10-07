@@ -33,10 +33,11 @@
                 {{ csrf_field() }}
                  <div style="font-weight:bold;">BOXに出した服を投稿しよう！</div>
                  <input type="text" name="comment" class="form-control c_text" placeholder="コメントを入力">
-                 <label for="file_upload" class="form-control p-1"id="label">
+                 <label for="file_upload" class="form-control p-1 mb-0"id="label">
                  <div id="file_n">ファイルを選択</div>
                  <input type="file"  id="file_upload" name="file_name" class="file_upload c_box_id" value="{{old('file_name')}}" style="display:none;">
                  </label>
+                 <!--<input type="number" name="years" class="form-control c_text" placeholder="服の使用年数">-->
                  <input type="hidden" name="box_id" class="form-control c_box_id" value="{{$box->id}}">
                  <button type="submit" class="btn" style="background-color:#FCE38A; display: block; margin: 0 0 0 auto;">送信</button>
           </form>
