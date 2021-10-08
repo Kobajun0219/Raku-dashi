@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Raku-dashi') }}</title>
     
     <link rel="icon" href="{{url('image/chara.png')}}">
-
+    <link rel="apple-touch-icon" href="sample.png" sizes="180x180">
     <!-- Scripts -->
     
 
@@ -108,18 +108,6 @@
                                     <a class="nav-link" href="{{url('mypage')}}">マイページ</a>
                                     <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                                 </li>
-                                <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                    </a>
-                                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
-    
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </li>
                                 
                                 <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;" data-bs-toggle="modal" data-bs-target="#tutorial">
                                     <a class="nav-link">チュートリアル</a>
@@ -134,6 +122,19 @@
                                 <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
                                     <a class="nav-link" href="{{url('policy')}}" style="font-size:10px;">プライバシーポリシー</a>
                                     <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+                                </li>
+                                
+                                <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                    </a>
+                                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+    
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </li>
                                 
                             @endguest

@@ -142,13 +142,13 @@ function hoverEvent(data,keydata) {
 }
 
 //場所をクリックしたら地図の場所が変わる関数
-// function eventPanto(data) {
-//      let xPlace = data['open_place_latitude'];
-//      let yPlace = data['open_place_longitude'];
-//     var targetPlace = new google.maps.LatLng(xPlace, yPlace);
-//     gmap.panTo(targetPlace);
+function eventPanto(data) {
+     let xPlace = data['box_latitude'];
+     let yPlace = data['box_longitude'];
+    var targetPlace = new google.maps.LatLng(xPlace, yPlace);
+    gmap.panTo(targetPlace);
     
-// }
+}
 
 
 

@@ -19,3 +19,7 @@
   app.blade.php
   
       <script src="{{ asset('js/app.js') }}" defer></script>
+      
+  index.blade.php
+
+      <a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank" class="font-weight-bold" onclick="eventPanto({{ $box }})">{{$box->place_name}}</a>

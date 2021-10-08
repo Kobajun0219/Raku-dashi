@@ -58,7 +58,7 @@
                           </div>
                         </td>
                         <td class="align-middle" style="width:30%">
-                           <a href="https://www.google.com/maps/search/?api=1&query={{$box->address}}" target="_blank" class="font-weight-bold">{{$box->place_name}}</a>
+                           <a style="text-decoration:none;" target="_blank" class="font-weight-bold" onclick="eventPanto({{ $box }})">{{$box->place_name}}</a>
                         </td>
                                
                         <!--tag表示-->

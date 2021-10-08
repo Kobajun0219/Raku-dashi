@@ -7,7 +7,7 @@
       <div class="modal-header">
         <h5 class="modal-title" id="add">PICK UP NEWS</h5><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body　mx-auto">
         <div class="fb-page" data-href="https://www.facebook.com/rakupo39" data-tabs="timeline" data-width="" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/rakupo39" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/rakupo39">Rakupo</a></blockquote></div>
         <!--<div><h5 class="modal-title pb-1 mb-1" id="add">真のコスト</h5></div>-->
         <!--<iframe style="max-width:100%;" width="400" height="280" src="https://www.youtube.com/embed/nxhCpLzreCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
