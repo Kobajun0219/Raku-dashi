@@ -29,28 +29,6 @@
                 <div class="card-header" style="background-color:#FCE38A;">{{ __('Login') }}</div>
                 <div class="card-body">
                     <div>全ての機能を利用するには会員登録が必要です</div>
-                    <div class="pt-2 text-center">
-                        <button type="submit" class="btn" style="background-color:#FCE38A;">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register with mail') }}</a>
-                        </button>
-                        <button type="submit" class="btn mt-2 mt-md-0" style="background-color:#06C755;width: 230px;">
-                        <a href="{{ route('line.login') }}" style="color: white;"><img src="{{url('image/btn_base.png')}}" style="height:39px;" class="pr-3">{{ __('Register with Line') }}</a>
-                        </button>
-                        <!--<a href="login/facebook">facebookでログイン</a>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-     </div>
-</div>
-
-
-<div class="container" style="margin-bottom:40px;">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-
-                <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -110,9 +88,31 @@
                     </form>
                 </div>
                 <div class="mx-auto">もしくは</div>
-                        <button type="submit" class="btn mx-auto m-2" style="background-color:#06C755;width: 230px;">
-                        <a href="{{ route('line.login') }}" style="color: white;"><img src="{{url('image/btn_base.png')}}" style="height:39px;" class="pr-3">{{ __('Login with Line') }}</a>
+                <button type="submit" class="btn mx-auto m-2" style="background-color:#06C755;width: 230px;">
+                <a href="{{ route('line.login') }}" style="color: white;"><img src="{{url('image/btn_base.png')}}" style="height:39px;" class="pr-3">{{ __('Login with Line') }}</a>
+                </button>
+            </div>
+        </div>
+     </div>
+</div>
+
+
+<div class="container" style="margin-bottom:40px;">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">新規会員登録はこちら</div>
+                    <div class="pt-2 text-center">
+                        <button type="submit" class="btn" style="background-color:#FCE38A;">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register with mail') }}</a>
                         </button>
+                        <button type="submit" class="btn mt-2 mt-md-0" style="background-color:#06C755;width: 230px;">
+                        <a href="{{ route('line.login') }}" style="color: white;"><img src="{{url('image/btn_base.png')}}" style="height:39px;" class="pr-3">{{ __('Register with Line') }}</a>
+                        </button>
+                        <!--<a href="login/facebook">facebookでログイン</a>-->
+                    </div>
+                </div>
             </div>
         </div>
     </div>

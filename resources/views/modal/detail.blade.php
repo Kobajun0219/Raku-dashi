@@ -16,7 +16,7 @@
     </div>
     <div class="modal-body">
         @if ($box->file_name == "")
-            <img src="{{url('image/raku.png')}}" style="max-width:100%;">
+            <img src="{{url('image/rakupo.png')}}" style="max-width:100%;">
         @else
             <img src="{{$box->file_name}}" style="max-width:100%;">
         @endif

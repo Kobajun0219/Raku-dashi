@@ -87,19 +87,19 @@
                                 @auth
                                     @if (!$box->isLikedBy(Auth::user()))
                                             <span class="likes">
-                                                <i class="fas fa-thumbs-up like-toggle" data-review-id="{{ $box->id }}"></i>
+                                                <i class="fas fa-heart like-toggle" data-review-id="{{ $box->id }}"></i>
                                                 <span class="like-counter">{{$box->likes_count}}</span>
                                             </span><!-- /.likes -->
                                     @else
                                             <span class="likes">
-                                                <i class="fas fa-thumbs-up heart like-toggle liked" data-review-id="{{ $box->id }}"></i>
+                                                <i class="fas fa-heart heart like-toggle liked" data-review-id="{{ $box->id }}"></i>
                                                 <span class="like-counter">{{$box->likes_count}}</span>
                                             </span><!-- /.likes -->
                                     @endif
                                 @endauth
                                     @guest
                                       <span class="likes">
-                                          <i class="fas fa-thumbs-up heart"></i>
+                                          <i class="fas fa-heart heart"></i>
                                         <span class="like-counter">{{$box->likes_count}}</span>
                                       </span><!-- /.likes -->
                                 @endguest

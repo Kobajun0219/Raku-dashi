@@ -9,11 +9,11 @@
     
     <div class="text-center"　style="align-items: flex-end;">
         @if(Auth::user()->image)
-        <img src="{{Auth::user()->image}}" style="width:100px;" class="rounded-circle">
+        <img src="{{Auth::user()->image}}" style="width:120px; height:120px" class="rounded-circle">
         @else
-        <img src="{{url('image/sample.png')}}" style="width:100px;" class="rounded-circle">
+        <img src="{{url('image/sample.png')}}" style="width:120px; height:120px" class="rounded-circle">
         @endif
-        <button class="btn pt-0 pb-0 pr-1 pl-1" style="background-color:#FCE38A; font-size:20px; margin-top: 50px;">
+        <button class="btn pt-0 pb-0 pr-1 pl-1" style="background-color:#FCE38A; font-size:20px; margin-top: 80px;">
         <a href="{{ url('change_mypage/'.auth()->id()) }}"><i class="fas fa-user-cog"></i></a>
         </button>
     </div>
@@ -37,7 +37,7 @@
             
                     <td class="align-middle">
                     　<span class="likes">
-                          <i class="fas fa-thumbs-up heart"></i>
+                          <i class="far fa-heart heart"></i>
                         <span class="like-counter">{{$box->likes_count}}</span>
                       </span><!-- /.likes -->
                     </td>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="modal-body">
                                 @if ($box->file_name == "")
-                                    <img src="{{url('image/raku.png')}}" style="max-width:100%;">
+                                    <img src="{{url('image/rakupo.png')}}" style="max-width:100%;">
                                 @else
                                     <img src="{{$box->file_name}}" style="max-width:100%;">
                                 @endif
