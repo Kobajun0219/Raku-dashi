@@ -23,7 +23,7 @@
                    場所名<span class="red">*</span><input type="text" name="place_name" class="form-control" value="{{old('place_name')}}" placeholder="ユニクロ渋谷店">
                 </div>
                 <div class="col-sm-6">
-                    コメント<span class="red" >*</span><input type="text" name="message" class="form-control" value="{{old('message')}}" placeholder="500円クーポンもらえます、一階にあります">
+                    コメント<input type="text" name="message" class="form-control" value="{{old('message')}}" placeholder="500円クーポンもらえます、一階にあります">
                 </div>
             </div>
             

@@ -69,7 +69,7 @@ class LineOAuthController extends Controller
                  ]);
                 //  dd($user_info);
                 Auth::login($user);
-                return redirect('/home');
+                return redirect('/success_login');
         }
     }
 

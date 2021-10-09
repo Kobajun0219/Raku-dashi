@@ -53,8 +53,7 @@ class LoginController extends Controller
     //ログイン画面への遷移
     public function showLoginForm(Request $request)
     {
-        $com = $request->old();
-        return view('auth/login', ['com' => $com]);
+        return view('auth/login');
     }
     
     
@@ -71,7 +70,7 @@ class LoginController extends Controller
         $this->performLogout($request);
         //redirect先でcom.bladeを表示させるために配列を作成
         $com = ["ログアウトが"];
-        return redirect('/login')->withInput($com);
+        return redirect('/')->withInput($com);
     }
     
     

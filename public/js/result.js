@@ -78,7 +78,7 @@ function showonmap() {
         var pos = new google.maps.LatLng(toukou[i].box_latitude, toukou[i].box_longitude); // 投稿の位置を設定
         var img = {                                 // 画像の設定
             url: "../image/01.png",        
-            scaledSize: new google.maps.Size(40, 40)    // 画像を縮小表示
+            scaledSize: new google.maps.Size(30, 30)    // 画像を縮小表示
         };
         
       //自分の手紙かどうかの条件分岐

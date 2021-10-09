@@ -55,6 +55,12 @@ class MainController extends Controller
         //保存するファイルに名前をつける
           $path = Storage::disk('s3')->putFile('/demo', $fileName, 'public');
           $comment->file_name = Storage::disk('s3')->url($path);
+        
+            //point
+            $point = new Point;
+            $point->u_id = auth()->id();
+            $point->point = "5";
+            $point->save(); 
          }else{
         //画像が登録されなかった時はから文字をいれる
           $fileName = "";
@@ -66,11 +72,11 @@ class MainController extends Controller
         $comment->box_id = $request->box_id;
         $comment->save(); 
         
-        //point
-        $point = new Point;
-        $point->u_id = auth()->id();
-        $point->point = "10";
-        $point->save(); 
+            //point
+            $point = new Point;
+            $point->u_id = auth()->id();
+            $point->point = "5";
+            $point->save(); 
         
         //redirect先でcom.bladeを表示させるために配列を作成
         $com = ["コメント投稿が"];
@@ -82,7 +88,6 @@ class MainController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'place_name' => 'required|max:255',
-            'message' => 'required|max:255',
             'ido' => 'required|max:50',
             'keido' => 'max:50',
             'address' => 'required|max:255',
@@ -155,10 +160,8 @@ class MainController extends Controller
             $my_long=$request->my_lon;        
 
         $boxes->map(function($item,$key) use ($my_lat,$my_long){
-
             $item['distance'] .= $item->get_distance($my_lat,$my_long);
             return $item;
-
             });
         
         $boxes = $boxes->sortBy('distance')->values();
