@@ -45,7 +45,7 @@
             @if ($user->image)
             <img id="preview" src="{{$user->image}}" style="width:200px; height:200px;" class="rounded-circle">
             @else
-            <img id="preview" src="" style="width:200px; height:200px;" class="rounded-circle">
+            <img id="preview" style="width:200px; height:200px;" class="rounded-circle">
             @endif
             </div>
             

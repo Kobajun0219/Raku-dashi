@@ -107,7 +107,7 @@ function showonmap() {
         //吹き出しを作成する関数。吹き出しの文言を変化させたいのであればここ。
         toukouInfo[i] = new google.maps.InfoWindow({
         content: `
-        <p>名称　${toukou[i].place_name}</p><br>
+        <p>場所　${toukou[i].place_name}</p><br>
         <p>コメント　${toukou[i].message}</p><br>
         <p>現在地からの距離　${toukou[i].distance}km</p>
         `,

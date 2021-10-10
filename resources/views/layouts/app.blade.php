@@ -44,6 +44,9 @@
     
     <!--modal for チュートリアル-->
     @include('modal.tutorial')
+    
+    <!--modal for send-->
+    @include('modal.send')
 
 <body>
     <header class =" mb-5">
@@ -69,7 +72,10 @@
                       <i class="fas fa-globe-asia"></i><div class="sub">News</div>
                     </button>
                     
-
+                    <button class="navbar-toggler" data-bs-toggle="modal" data-bs-target="#send">
+                      <i class="fas fa-box-open"></i></i><div class="sub">Send</div>
+                    </button>
+                    
                     <button class="navbar-toggler" type="button">
                         <a href="{{ url('post') }}"><i class="fas fa-plus"></i><div class="sub">Post</div></a>
                     </button>
@@ -99,6 +105,10 @@
                                         <a class="nav-link">チュートリアル</a>
                                         <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                                     </li>
+                                    <li class="dropdown-item list-group-item-action" style="display:flex; align-items: center;">
+                                        <a class="nav-link" href="{{url('policy')}}" style="font-size:10px;">プライバシーポリシー</a>
+                                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+                                </li>
                                 @endif
                             @else
                                 <li class="dropdown-item list-group-item-action">

@@ -19,8 +19,11 @@
     </div>
 
     <div class="text-center pt-3 pb-2"><h3>Hi!&nbsp;&nbsp;{{Auth::user()->name}}さん</h3></div>
+    @if($point == 0)
+    <div class="text-center pb-2"><h3>コメントや投稿をして貢献度ポイントを集めよう！</h3></div>
+    @else
     <div class="text-center pb-2"><h3>貢献度:{{$point}}&nbsp;thanks!</h3></div>
-
+    @endif
 
     <div class="pl-2 pr-2">
         <table class="table table-sm">
