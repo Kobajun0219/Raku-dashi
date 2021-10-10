@@ -65,19 +65,19 @@
             <nav class="navbar shadow-sm pt-1 pb-1 pr-1 pl-1" style="background-color:#FCE38A;">
                 <div class="container">
                     <button class="navbar-toggler">
-                        <a href="{{ url('/') }}"><i class="fas fa-home"></i><div class="sub">Home</div></a>
+                        <a href="{{ url('/') }}"><i class="fas fa-home"></i><div class="sub">ホーム</div></a>
                     </button>
                     
                     <button class="navbar-toggler" data-bs-toggle="modal" data-bs-target="#add">
-                      <i class="fas fa-globe-asia"></i><div class="sub">News</div>
+                      <i class="fas fa-globe-asia"></i><div class="sub">ニュース</div>
                     </button>
                     
                     <button class="navbar-toggler" data-bs-toggle="modal" data-bs-target="#send">
-                      <i class="fas fa-box-open"></i></i><div class="sub">Send</div>
+                      <i class="fas fa-box-open"></i></i><div class="sub">寄付</div>
                     </button>
                     
                     <button class="navbar-toggler" type="button">
-                        <a href="{{ url('post') }}"><i class="fas fa-plus"></i><div class="sub">Post</div></a>
+                        <a href="{{ url('post') }}"><i class="fas fa-plus"></i><div class="sub">投稿</div></a>
                     </button>
                     
                     
@@ -88,7 +88,7 @@
                     
                     <div class="dropup">
                       <button class="navbar-toggler" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-tshirt"></i><div class="sub">Menu</div>
+                        <i class="fas fa-tshirt"></i><div class="sub">メニュー</div>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style = "left: -100px;">
                             @guest
