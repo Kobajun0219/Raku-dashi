@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Raku-dashi') }}</title>
     
     <link rel="icon" href="{{url('image/chara.png')}}">
-    <link rel="apple-touch-icon" href="sample.png" sizes="180x180">
+    <link rel="apple-touch-icon" href="{{url('image/sample.png')}}" sizes="180x180">
     <!-- Scripts -->
     
 
