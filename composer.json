@@ -9,9 +9,14 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+        "aws/aws-sdk-php": "^3.193",
         "fideloper/proxy": "^4.4",
+        "guzzlehttp/guzzle": "^7.3",
         "laravel/framework": "^6.20.26",
-        "laravel/tinker": "^2.5"
+        "laravel/socialite": "^5.2",
+        "laravel/tinker": "^2.5",
+        "league/flysystem-aws-s3-v3": "1.*",
+        "socialiteproviders/line": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^1.16.15",
@@ -59,9 +64,10 @@
             "@php artisan key:generate --ansi"
         ],
 
-
         "compile": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ]
     }
+
+
 }
